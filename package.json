@@ -3,9 +3,24 @@
   "version": "0.1.0",
   "private": true,
   "dependencies": {
+    "actioncable": "^5.2.1",
+    "axios": "^0.18.0",
+    "classnames": "^2.2.6",
+    "lodash": "^4.17.11",
+    "material-ui": "^0.20.2",
+    "moment": "^2.22.2",
+    "normalize": "^0.3.1",
     "react": "^16.6.3",
     "react-dom": "^16.6.3",
-    "react-scripts": "2.1.1"
+    "react-dropzone": "^7.0.1",
+    "react-google-maps": "^9.4.5",
+    "react-modal": "^3.6.1",
+    "react-places-autocomplete": "^7.2.0",
+    "react-router": "^4.3.1",
+    "react-router-dom": "^4.3.1",
+    "react-router-scroll": "^0.4.4",
+    "react-scripts": "2.1.1",
+    "skeleton": "^0.1.2"
   },
   "scripts": {
     "start": "react-scripts start",
