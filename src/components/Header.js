@@ -2,17 +2,28 @@ import React, { Component } from 'react';
 import { NavLink } from 'react-router-dom';
 import '../styles/Header.css';
 
+
+
 class Header extends Component {
   render() {
     let links;
     if (this.props.isLoggedIn) {
       links =
-        <ul>
-          <li>
-            <NavLink to="/home/feed">Home</NavLink>
+        <ul className="Header__nav-group">
+          <li className="Header__nav-link">
+            <NavLink to="/home/feed">
+              <i className="fa fa-compass Header__nav-icon" aria-hidden="true" />
+            </NavLink>
           </li>
-          <li>
-            <NavLink to="/home/profile">Profile</NavLink>
+          <li className="Header__nav-link Header__notification-nav">
+            <a className="NotificationButton__button" href="#">
+              <i className="fa fa-heart-o Header__nav-icon" aria-hidden="true" />
+            </a>
+          </li>
+          <li className="Header__nav-link">
+            <NavLink to="/home/profile">
+              <i className="fa fa-smile-o Header__nav-icon" aria-hidden="true" />
+            </NavLink>
           </li>
         </ul>
     } else {
