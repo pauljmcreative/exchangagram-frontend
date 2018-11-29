@@ -8,6 +8,7 @@ import SignIn from './views/SignIn';
 class App extends Component {
   state = {
     isLoggedIn: false,
+    user: null,
   }
 
   toggleLogIn = () => {
@@ -16,13 +17,21 @@ class App extends Component {
     });
   }
 
+  setUser = (userData) => {
+    this.setState({
+      user: userData,
+      isLoggedIn: true,
+    });
+  }
+
   render() {
+    console.log(this.state);
     return (
       <div className="MainLayout__root">
         <Header isLoggedIn={this.state.isLoggedIn} toggleLogIn={this.toggleLogIn} />
         <Switch>
           <Route exact path="/" component={SignIn} />
-          <Route exact path="/signup" component={SignUp} />
+          <Route exact path="/signup" render={props => <SignUp {...props} setUser={this.setUser} />} />
           <Route path="/home/" component={Home} />
         </Switch>
       </div>

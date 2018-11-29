@@ -1,8 +1,16 @@
 import React, { Component } from 'react';
+import UsersAPI from '../../models/UsersAPI';
 import ErrorMessages from '../ErrorMessages';
+import jwt_decode from 'jwt-decode';
 import '../../styles/SignUpForm.css';
 
 class SignUpForm extends Component {
+  state = {
+    name: '',
+    email: '',
+    username: '',
+    password: '',
+  }
   renderError(field) {
     if (field.touched && field.error) {
       return (
@@ -13,12 +21,49 @@ class SignUpForm extends Component {
     }
   }
 
-  render() {
+  handleChange = (e) => {
+    this.setState({
+      [e.target.name]: e.target.value
+    });
+  }
 
+  handleSubmit = (e) => {
+    e.preventDefault();
+
+    const userData = {
+      name: this.state.name,
+      email: this.state.email,
+      username: this.state.username,
+      password: this.state.password
+    }
+    UsersAPI.signup(userData)
+      .then(res => {
+        console.log(res);
+        localStorage.setItem('egt', res.data.token);
+        const decoded = jwt_decode(res.data.token);
+        // console.log(decoded);
+        this.props.setUser(decoded);
+      })
+  }
+
+
+  render() {
+    console.log(this.state);
     return (
       <form className="SignUpForm__root">
         <fieldset>
           <input
+            onChange={this.handleChange}
+            name="name"
+            type="text"
+            placeholder="Name"
+            className="SignUpForm__input"
+          />
+        </fieldset>
+        <fieldset>
+          <input
+            onChange={this.handleChange}
+            name="email"
             type="email"
             placeholder="Email"
             className="SignUpForm__input"
@@ -26,6 +71,8 @@ class SignUpForm extends Component {
         </fieldset>
         <fieldset>
           <input
+            onChange={this.handleChange}
+            name="username"
             type="text"
             placeholder="Username"
             className="SignUpForm__input"
@@ -33,12 +80,15 @@ class SignUpForm extends Component {
         </fieldset>
         <fieldset>
           <input
+            onChange={this.handleChange}
+            name="password"
             type="password"
             placeholder="Create Password"
             className="SignUpForm__input"
           />
         </fieldset>
         <button
+          onClick={this.handleSubmit}
           className="SignUpForm__button"
           type="submit">
           <i className="fa fa-spinner fa-pulse fa-3x fa-fw SignUpForm__spinner" />

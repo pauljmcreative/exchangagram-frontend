@@ -3,14 +3,14 @@ import SignUpForm from '../components/signup/SignUpForm';
 import FormDivider from '../components/signup/FormDivider';
 import '../styles/SignUp.css';
 
-const SignUp = () => {
+const SignUp = (props) => {
   return (
     <div className="SignUp__root container">
       <div className="row">
         <div className="six columns offset-by-three">
           <div className="SignUp__form-wrapper">
             <h1>SignUp!!!</h1>
-            <SignUpForm />
+            <SignUpForm setUser={props.setUser} />
             <FormDivider />
           </div>
         </div>

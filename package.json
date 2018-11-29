@@ -6,6 +6,7 @@
     "actioncable": "^5.2.1",
     "axios": "^0.18.0",
     "classnames": "^2.2.6",
+    "jwt-decode": "^2.2.0",
     "lodash": "^4.17.11",
     "material-ui": "^0.20.2",
     "moment": "^2.22.2",
