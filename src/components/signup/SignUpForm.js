@@ -27,7 +27,7 @@ class SignUpForm extends Component {
     });
   }
 
-  handleSubmit = (e) => {
+  handleSignupSubmit = (e) => {
     e.preventDefault();
 
     const userData = {
@@ -48,7 +48,7 @@ class SignUpForm extends Component {
 
 
   render() {
-    console.log(this.state);
+    console.log(this.props);
     return (
       <form className="SignUpForm__root">
         <fieldset>
@@ -88,7 +88,7 @@ class SignUpForm extends Component {
           />
         </fieldset>
         <button
-          onClick={this.handleSubmit}
+          onClick={this.handleSignupSubmit}
           className="SignUpForm__button"
           type="submit">
           <i className="fa fa-spinner fa-pulse fa-3x fa-fw SignUpForm__spinner" />
