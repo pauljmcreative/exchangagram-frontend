@@ -11,6 +11,9 @@ class Header extends Component {
       links =
         <ul className="Header__nav-group">
           <li className="Header__nav-link">
+            <p className="Header__user">Hello {this.props.user.user.username}</p>
+          </li>
+          <li className="Header__nav-link">
             <NavLink to="/home/feed">
               <i className="fa fa-compass Header__nav-icon" aria-hidden="true" />
             </NavLink>
@@ -28,11 +31,11 @@ class Header extends Component {
         </ul>
     } else {
       links =
-        <ul>
-          <li>
+        <ul className="Header__nav-group">
+          <li className="Header__nav-link">
             <NavLink to="/">Sign In</NavLink>
           </li>
-          <li>
+          <li className="Header__nav-link">
             <NavLink to="/signup">Sign Up</NavLink>
           </li>
         </ul>
@@ -40,7 +43,6 @@ class Header extends Component {
     return (
 
       <header className="Header__root">
-        <button onClick={this.props.toggleLogIn}>toggle</button>
         <div className="container">
           <div className="row  Header__container">
             <div className="three columns">
@@ -48,8 +50,10 @@ class Header extends Component {
                 <NavLink to="#" className="Header__logo-link">
                   <i className="fa fa-instagram Header__instagram-icon" aria-hidden="true" /> Exchangeagram</NavLink>
               </h1>
-              {links}
             </div>
+            <nav className="offset-by-seven two columns">
+              {links}
+            </nav>
           </div>
         </div>
       </header>
@@ -62,4 +66,11 @@ export default Header;
 
 
 
+
+
+{/* <li className="Header__nav-link">
+  <NavLink to={`/${this.props.currentUser.username}`}>
+    <i className="fa fa-smile-o Header__nav-icon" aria-hidden="true" />
+  </NavLink>
+</li> */}
 

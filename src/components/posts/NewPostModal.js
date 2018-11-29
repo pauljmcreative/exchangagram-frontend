@@ -36,6 +36,7 @@ class NewPostModal extends Component {
         onRequestClose={this.props.onRequestClose}
         contentLabel="NewPostModal"
         style={customStyles}>
+        <h1>modal is working</h1>
       </Modal>
     );
   }

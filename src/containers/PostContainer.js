@@ -6,7 +6,11 @@ class PostContainer extends Component {
     posts: [],
   }
 
-  componentDidMount = async () => {
+  componentDidMount = () => {
+    this.fetchPosts();
+  }
+
+  fetchPosts = async () => {
     let response = await fetch('http://localhost:4000/api/posts');
     let json = await response.json();
     this.setState({

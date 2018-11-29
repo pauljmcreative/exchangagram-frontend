@@ -24,8 +24,7 @@ class SignInForm extends Component {
 
     UsersAPI.signin(signinData)
       .then(res => {
-        console.log('SIGNIN', res)
-        localStorage.setItem('sit', res.data.token);
+        localStorage.setItem('egt', res.data.token);
         const decoded = jwt_decode(res.data.token);
         // console.log('decoded>>', decoded);
         this.props.setUser(decoded);
@@ -37,7 +36,6 @@ class SignInForm extends Component {
   }
 
   render() {
-    console.log(this.props)
     return (
       <form className="SignInForm__root">
         <fieldset>

@@ -14,6 +14,13 @@
   margin: 0;
 }
 
+.Header__user {
+  font-size: 16px;
+  font-family: 'Pacifico', cursive;
+  letter-spacing: 0.1px;
+  margin: 0;
+}
+
 .Header__logo-link {
   text-decoration: none;
   color: #262626;
@@ -40,6 +47,11 @@
 .Header__nav-link {
   margin: 0;
   font-size: 15px;
+}
+
+.Header__nav-link NavLink {
+  display: inline-flex;
+  justify-content: flex-end;
 }
 
 .Header__nav-link a {
@@ -70,3 +82,5 @@
   border-radius: 50%;
   cursor: pointer;
 }
+
+
