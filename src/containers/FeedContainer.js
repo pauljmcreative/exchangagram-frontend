@@ -4,6 +4,11 @@ import NewPostButton from '../components/posts/NewPostButton';
 import NewPostModal from '../components/posts/NewPostModal';
 
 class FeedContainer extends Component {
+  static defaultProps = {
+    user: {
+    }
+  }
+
   state = {
     newPostModalIsOpen: false,
   }
@@ -13,15 +18,23 @@ class FeedContainer extends Component {
 
   // console.log('USERfeed', this.props.user)
   render() {
+    console.log(this.props)
+    let postModal;
+    if (this.props.user.user) {
+      postModal = (
+        <NewPostModal
+          userId={this.props.user.user.id}
+          isOpen={this.state.newPostModalIsOpen}
+          onRequestClose={this.closeModal}
+        />
+      )
+    }
     return (
       <div>
         <h1>FEED</h1>
         {/* <PostContainer /> */}
         <NewPostButton onClick={this.openModal} />
-        <NewPostModal
-          isOpen={this.state.newPostModalIsOpen}
-          onRequestClose={this.closeModal}
-        />
+        {postModal}
       </div>
     );
   }

@@ -1,7 +1,5 @@
 import React, { Component } from 'react';
 import { Switch, Route } from 'react-router-dom';
-import NewPostButton from '../components/posts/NewPostButton';
-import NewPostModal from '../components/posts/NewPostModal';
 import FeedContainer from '../containers/FeedContainer';
 import ProfileContainer from '../containers/ProfileContainer';
 import '../styles/Home.css';

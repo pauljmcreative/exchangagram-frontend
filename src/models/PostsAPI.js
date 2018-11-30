@@ -6,6 +6,8 @@ class PostsAPI {
 
   static show = (id) => axios.get(baseUrl + id);
 
+  static create = (data, id) => axios.post(baseUrl + 'new/' + id, data)
+
 
 };
 
