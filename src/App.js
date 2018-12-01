@@ -35,7 +35,7 @@ class App extends Component {
   }
 
   handleLogout = () => {
-    console.log('logout clicked')
+    // console.log('logout clicked')
     if (localStorage.getItem('egt') !== null) {
       localStorage.removeItem('egt');
       this.setState({ isLoggedIn: false, user: {} });
@@ -44,7 +44,7 @@ class App extends Component {
   }
 
   render() {
-    console.log(this.state);
+    // console.log(this.state);
     return (
       <div className="MainLayout__root">
         <Header isLoggedIn={this.state.isLoggedIn} user={this.state.user} />

@@ -1,33 +1,65 @@
 import React, { Component } from 'react';
+import NewPostButton from '../components/posts/NewPostButton';
+import NewPostModal from '../components/posts/NewPostModal';
+import PostsList from '../components/posts/PostsList';
+import PostsAPI from '../models/PostsAPI';
 
+class FeedContainer extends Component {
+  static defaultProps = {
+    user: {
+    }
+  }
 
-class PostContainer extends Component {
   state = {
+    newPostModalIsOpen: false,
     posts: [],
   }
+
+  openModal = () => this.setState({ newPostModalIsOpen: true });
+  closeModal = () => this.setState({ newPostModalIsOpen: false });
+
 
   componentDidMount = () => {
     this.fetchPosts();
   }
 
-  fetchPosts = async () => {
-    let response = await fetch('http://localhost:4000/api/posts');
-    let json = await response.json();
-    this.setState({
-      posts: json
-    })
+  fetchPosts = () => {
+    PostsAPI.index()
+      .then(res => {
+        this.setState({
+          posts: res.data
+        })
+      })
   }
 
 
-
+  // console.log('USERfeed', this.props.user)
   render() {
-    console.log(this.state);
+    console.log('POST CONTAINER POSTS>', this.state.posts);
+    let postModal;
+    if (this.props.user.user) {
+      postModal = (
+        <NewPostModal
+          fetchPosts={this.fetchPosts}
+          userId={this.props.user.user.id}
+          isOpen={this.state.newPostModalIsOpen}
+          closeModal={this.closeModal}
+          onRequestClose={this.closeModal}
+        />
+      )
+    }
     return (
       <div>
-        <h1>POST CONTAINER</h1>
+        <h1>FEED</h1>
+        <PostsList posts={this.state.posts} user={this.props.user} />
+        <NewPostButton onClick={this.openModal} />
+        {postModal}
       </div>
     );
   }
 }
 
-export default PostContainer;
+export default FeedContainer;
+
+
+

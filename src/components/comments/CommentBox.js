@@ -1,19 +1,21 @@
 import React, { Component } from 'react';
-import '../styles/CommentBox.css';
+import '../../styles/CommentBox.css';
 
 class CommentBox extends Component {
-  constructor(props) {
-    super(props);
-    this.state = {
-      commentBody: '',
-    };
+  state = {
+    commentBody: '',
+  };
 
-    this.onCommentChange = (event) => this.setState({ commentBody: event.target.value });
+  handleCommentChange = (e) => {
+    console.log('comment event:', e);
+    this.setState({ commentBody: e.target.value });
   }
 
-  handleKeyDown = (event) => {
+
+  handleCommentKeyDown = (event) => {
+    console.log('Comment submitted!!!!');
     if (event.which === 13 && this.state.commentBody.trim().length > 0) {
-      this.props.onSubmit(this.state.commentBody);
+      this.props.onKeyDown(this.state.commentBody);
       this.setState({ commentBody: '' });
       this.commentInput.blur();
     }
@@ -27,8 +29,8 @@ class CommentBox extends Component {
           type="text"
           placeholder="Add a comment..."
           value={this.state.commentBody}
-          onChange={this.onCommentChange}
-          onKeyDown={this.handleKeyDown}
+          onChange={this.handleCommentChange}
+          onKeyDown={this.handleCommentKeyDown}
           ref={(ref) => { this.commentInput = ref }}
         />
       </div>

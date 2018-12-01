@@ -1,16 +1,18 @@
-import React, { Component } from 'react'
+import React from 'react';
+import Post from './Post';
 
-class PostsList extends Component {
-  render() {
-    const postsList = posts.map(post => <Post />)
-    // console.log('POSTLIST>>>', postsList)
-    return (
-      <div className="row align-items-end mx-auto">
-        {postsList}
-      </div>
-    );
-  };
+const PostsList = (props) => {
+  // console.log('POSTlist>>', user);
+  console.log('POSTLIST POSTS>>>', props.posts)
+  const postItems = props.posts.map(post => <Post key={post._id} post={post} user={props.user} />)
+  return (
+    <div className="row align-items-end mx-auto">
+      {postItems}
+      {/* <Post posts={props.posts} user={props.user} /> */}
+    </div>
+  );
+
 }
 
-
 export default PostsList;
+

@@ -1,6 +1,7 @@
 import React, { Component } from 'react';
 import Modal from 'react-modal';
 import PostsAPI from '../../models/PostsAPI';
+import ImagesAPI from '../../models/ImagesAPI';
 
 const customStyles = {
   overlay: {
@@ -53,14 +54,20 @@ class NewPostModal extends Component {
       location: this.state.location,
       caption: this.state.caption,
     }
+
+    const imageData = new FormData(document.querySelector('#image-upload'));
+
     console.log('USERID', this.props.userId)
     PostsAPI.create(postData, this.props.userId)
-      .then(res => {
-        console.log(res)
+      .then(postres => {
+        console.log('post res:', postres)
+        ImagesAPI.create(imageData, postres.data._id)
+          .then(imageres => {
+            console.log('imageRes:', imageres)
+            this.props.closeModal();
+            this.props.fetchPosts();
+          })
       })
-
-
-
   }
 
 
@@ -91,13 +98,22 @@ class NewPostModal extends Component {
               className="PostForm__input"
             />
           </fieldset>
-          <button
-            onClick={this.handlePostSubmit}
-            className="PostForm__button"
-            type="submit">
-            <i className="fa fa-spinner fa-pulse fa-3x fa-fw PostForm__spinner" />
-          </button>
         </form>
+        <form id="image-upload" encType="multipart/form-data">
+          <fieldset>
+            <div class="btn grey">
+              <span>File</span>
+              <input name="myImage" type="file" />
+            </div>
+          </fieldset>
+        </form>
+        <button
+          onClick={this.handlePostSubmit}
+          className="PostForm__button"
+          type="submit">
+          Submit
+          {/* <i className="fa fa-spinner fa-pulse fa-3x fa-fw PostForm__spinner" /> */}
+        </button>
 
       </Modal>
     );
@@ -107,3 +123,4 @@ class NewPostModal extends Component {
 
 
 export default NewPostModal;
+

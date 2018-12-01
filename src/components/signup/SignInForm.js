@@ -1,4 +1,5 @@
 import React, { Component } from 'react';
+import { withRouter } from 'react-router-dom';
 import jwt_decode from 'jwt-decode';
 import '../../styles/SignInForm.css';
 import UsersAPI from '../../models/UsersAPI';
@@ -29,6 +30,7 @@ class SignInForm extends Component {
         // console.log('decoded>>', decoded);
         this.props.setUser(decoded);
       })
+      .then(() => this.props.history.push('/home/feed'))
       .catch(err => {
         console.log(err)
       })
@@ -68,4 +70,4 @@ class SignInForm extends Component {
 }
 
 
-export default SignInForm;
+export default withRouter(SignInForm);

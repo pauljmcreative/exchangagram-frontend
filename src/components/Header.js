@@ -24,7 +24,7 @@ class Header extends Component {
             </a>
           </li>
           <li className="Header__nav-link">
-            <NavLink to="/home/profile">
+            <NavLink to={`/home/profile/${this.props.user.user.id}`}>
               <i className="fa fa-smile-o Header__nav-icon" aria-hidden="true" />
             </NavLink>
           </li>
