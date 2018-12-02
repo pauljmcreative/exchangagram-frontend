@@ -35,7 +35,7 @@ class FeedContainer extends Component {
 
   // console.log('USERfeed', this.props.user)
   render() {
-    console.log('POST CONTAINER POSTS>', this.state.posts);
+    // console.log('POST CONTAINER POSTS>', this.state.posts);
     let postModal;
     if (this.props.user.user) {
       postModal = (

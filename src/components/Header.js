@@ -5,7 +5,9 @@ import '../styles/Header.css';
 
 
 class Header extends Component {
+
   render() {
+    console.log("HEADER>>", this.props.isLoggedIn)
     let links;
     if (this.props.isLoggedIn) {
       links =
@@ -62,15 +64,3 @@ class Header extends Component {
 }
 
 export default Header;
-
-
-
-
-
-
-{/* <li className="Header__nav-link">
-  <NavLink to={`/${this.props.currentUser.username}`}>
-    <i className="fa fa-smile-o Header__nav-icon" aria-hidden="true" />
-  </NavLink>
-</li> */}
-

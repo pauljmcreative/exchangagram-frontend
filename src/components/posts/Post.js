@@ -4,6 +4,7 @@ import ImagesAPI from '../../models/ImagesAPI';
 import LikeButton from '../LikeButton';
 import CommentBox from '../comments/CommentBox';
 import '../../styles/Post.css';
+import PostsAPI from '../../models/PostsAPI';
 
 
 // for each individual post
@@ -16,12 +17,23 @@ import '../../styles/Post.css';
 class Post extends Component {
   state = {
     postImage: '',
+    post: {},
   }
 
   componentDidMount = () => {
     if (this.props.post._id) {
       this.fetchImage(this.props.post._id);
+      this.fetchPostById(this.props.post._id);
     }
+  }
+
+  fetchPostById = (postId) => {
+    PostsAPI.show(postId)
+      .then(res => {
+        this.setState({
+          post: res.data,
+        })
+      })
   }
 
   fetchImage = (postId) => {
@@ -31,6 +43,20 @@ class Post extends Component {
           postImage: res.data[0].imageName
         })
       })
+  }
+
+  increaseLikes = () => {
+    let likeCount = this.state.post.likes + 1;
+    let increaseLikes = { likes: likeCount };
+    PostsAPI.update(this.state.post._id, increaseLikes)
+      .then(res => this.fetchPostById(this.state.post._id));
+  }
+
+  decreaseLikes = () => {
+    let decreaseCount = this.state.post.likes - 1;
+    let decreaseLikes = { likes: decreaseCount };
+    PostsAPI.update(this.state.post._id, decreaseLikes)
+      .then(res => this.fetchPostById(this.state.post._id));
   }
 
 
@@ -62,11 +88,22 @@ class Post extends Component {
         </div>
         <div className='Post__body'>
           <img src={`http://localhost:4000/image/${this.state.postImage}`} />
+          <div>{this.state.post.location}</div>
+          <div>{this.state.post.caption}</div>
         </div>
         <div className="Post__footer">
+          <div>Likes: {this.state.post.likes}</div>
           <div className="Post__action-box">
             <div className="Post__like-button">
               <LikeButton />
+              <button
+                onClick={this.increaseLikes}>
+                <i className="fa fa-heart-o LikeButton__icon" />
+              </button>
+              <button
+                onClick={this.decreaseLikes}>
+                <i className="fa fa-heart-o LikeButton__icon" />
+              </button>
             </div>
             <div className="Post__comment-box">
               <CommentBox />
