@@ -1,10 +1,10 @@
-import React, { PropTypes } from 'react';
+import React from 'react';
 import Modal from 'react-modal';
 import '../styles/ConfirmationModal.css';
 
 const ConfirmationModal = (props) => {
   const customStyles = {
-    overlay : {
+    overlay: {
       position: 'fixed',
       top: 0,
       left: 0,
@@ -12,7 +12,7 @@ const ConfirmationModal = (props) => {
       bottom: 0,
       backgroundColor: 'rgba(0, 0, 0, 0.45)'
     },
-    content : {
+    content: {
       position: 'absolute',
       top: '45%',
       left: '50%',
@@ -43,8 +43,8 @@ const ConfirmationModal = (props) => {
         </button>
         <button
           className="ConfirmationModal__button"
-            onClick={props.onRequestClose}>
-            {props.cancelText}
+          onClick={props.onRequestClose}>
+          {props.cancelText}
         </button>
       </div>
     </Modal>
@@ -53,14 +53,4 @@ const ConfirmationModal = (props) => {
 
 export default ConfirmationModal;
 
-ConfirmationModal.propTypes = {
-  isOpen: PropTypes.bool.isRequired,
-  onRequestClose: PropTypes.func.isRequired,
-  onConfirmClick: PropTypes.func.isRequired,
-  confirmText: PropTypes.string.isRequired,
-  cancelText: PropTypes.string.isRequired,
-};
 
-ConfirmationModal.defaultProps = {
-  cancelText: 'Cancel',
-}

@@ -3,43 +3,49 @@ import Modal from 'react-modal';
 import PostsAPI from '../../models/PostsAPI';
 import ImagesAPI from '../../models/ImagesAPI';
 
-const customStyles = {
-  overlay: {
-    position: 'fixed',
-    top: 0,
-    left: 0,
-    right: 0,
-    bottom: 0,
-    backgroundColor: 'rgba(0,0,0, 0.8)'
-  },
-  content: {
-    position: 'absolute',
-    top: '50%',
-    left: '50%',
-    transform: 'translate(-50%, -50%)',
-    right: 'initial',
-    bottom: 'initial',
-    border: '1px solid #ccc',
-    background: '#fff',
-    overflow: 'auto',
-    WebkitOverflowScrolling: 'touch',
-    borderRadius: '4px',
-    outline: 'none',
-    padding: '30px'
+class GridModal extends Component {
+  state = {
 
   }
-}
 
-class GridModal extends Component {
 
-  handlePostChange = (e) => {
+  getCustomStyles() {
+    return {
+      overlay: {
+        position: 'fixed',
+        top: 0,
+        left: 0,
+        right: 0,
+        bottom: 0,
+        backgroundColor: 'rgba(0, 0, 0, 0.75)'
+      },
+      content: {
+        position: 'absolute',
+        top: '50%',
+        left: '50%',
+        right: 'initial',
+        bottom: 'initial',
+        transform: 'translate(-50%, -50%)',
+        border: 'none',
+        background: '#fff',
+        overflow: 'auto',
+        WebkitOverflowScrolling: 'touch',
+        borderRadius: '0px',
+        outline: 'none',
+        padding: '0px',
+        width: '65vw',
+      }
+    }
+  }
+
+  handleGridModalChange = (e) => {
     this.setState({
       [e.target.name]: e.target.value
     });
     console.log(this.state)
   }
 
-  handlePostSubmit = (e) => {
+  handleGridModalSubmit = (e) => {
     e.preventDefault();
 
   }
@@ -53,7 +59,7 @@ class GridModal extends Component {
         isOpen={this.props.isOpen}
         onRequestClose={this.props.onRequestClose}
         contentLabel="GridModal"
-        style={customStyles}>
+        style={this.getCustomStyles()}>
         <div>GRID MODAL</div>
       </Modal>
     );

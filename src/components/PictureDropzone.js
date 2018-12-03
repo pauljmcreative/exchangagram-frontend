@@ -1,4 +1,5 @@
-import React, { Component } from 'react';
+import React, { Component, Fragment } from 'react';
+import { render } from 'react-dom';
 import Dropzone from 'react-dropzone';
 
 const imageMaxSize = 2000000 //bytes
@@ -15,26 +16,40 @@ handleOnDrop = (files, rejectedFiles) => {
     }
   }
 
-  if (files && files.length > 0) {
+  else if (files && files.length > 0) {
     const currentFile = files[0]
     const currentFileType = currentFile.type
     const currentFileSize = currentFile.size
     if (currentFileSize > imageMaxSize) {
       alert('This file is too big')
     }
+  } else {
+    this.setState({
+      files: this.state.files.concat(files),
+    });
   }
 }
 
 
 class PictureDropzone extends Component {
+  state = {
+    files: [],
+  }
+
   render() {
+    const previewStyle = {
+      display: 'inline',
+      width: 100,
+      height: 100,
+    };
     return (
       <Dropzone
         className="NewPostBoard__dropzone"
         onDrop={this.handleOnDrop}
         maxSize={imageMaxSize}
         multiple={false}
-        accept="image/*" >
+        accept="image/*"
+      >
         <div className="NewPostBoard__dropzone-inner-wrapper">
           <div className="NewPostBoard__dropzone-inner-content">
             <div>
@@ -44,7 +59,21 @@ class PictureDropzone extends Component {
           </div>
         </div>
       </Dropzone>
-    );
+      {
+      this.state.files.length > 0 &&
+        <Fragment>
+          <h3>Previews</h3>
+          {this.state.files.map((file) => (
+            <img
+              alt="Preview"
+              key={file.preview}
+              src={file.preview}
+              style={previewStyle}
+            />
+          ))}
+        </Fragment>
+    }
+    )
   }
 }
 
