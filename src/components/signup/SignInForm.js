@@ -62,7 +62,7 @@ class SignInForm extends Component {
           onClick={this.handleSigninSubmit}
           className="SignInForm__button"
           type="submit">
-          <i className="fa fa-spinner fa-pulse fa-3x fa-fw SignInForm__spinner" />
+          Submit
         </button>
       </form>
     );

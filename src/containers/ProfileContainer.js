@@ -1,50 +1,24 @@
 import React, { Component } from 'react';
 import Profile from '../components/profile/Profile';
 import GridList from '../components/profile/GridList';
+import EditProfileForm from '../components/profile/EditProfileForm';
 import PostsAPI from '../models/PostsAPI';
-import AvatarsAPI from '../models/AvatarsAPI';
+// import AvatarsAPI from '../models/AvatarsAPI';
 import GridModal from '../components/profile/GridModal';
+import UsersAPI from '../models/UsersAPI';
 
 
 class ProfileContainer extends Component {
   state = {
-    gridModalIsOpen: false,
-    activeGridIndex: null,
     posts: [],
+    user: {},
+    editProfile: false,
   }
-
-  openModal = (index) => this.setState({
-    gridModalIsOpen: true,
-    activeGridIndex: index
-  });
-  closeModal = () => this.setState({
-    gridModalIsOpen: false,
-    activeGridIndex: null
-  });
-
-  PrevGridClick() {
-    if (this.state.activeGridIndex === 0) {
-      return false;
-    }
-    this.setState({
-      activeGridIndex: this.state.activeGridIndex - 1,
-    });
-  }
-
-  NextGridClick() {
-    if (this.state.activeGridIndex === this.state.posts.length - 1) {
-      return false;
-    }
-    this.setState({
-      activeGridIndex: this.state.activeGridIndex + 1,
-    });
-  }
-
-
 
 
   componentDidMount = () => {
     this.fetchPosts();
+    this.fetchUser(this.props.match.params.user_id);
   }
 
   fetchPosts = () => {
@@ -54,6 +28,22 @@ class ProfileContainer extends Component {
           posts: res.data
         })
       })
+  }
+
+  fetchUser = (id) => {
+    UsersAPI.show(id)
+      .then(res => {
+        console.log(res)
+        this.setState({
+          user: res.data
+        })
+      })
+  }
+
+  updateEditProfile = () => {
+    this.setState({
+      editProfile: !this.state.editProfile
+    })
   }
 
   renderGridModal() {
@@ -66,48 +56,52 @@ class ProfileContainer extends Component {
         />
       )
     }
-    const activePost = this.props.posts[activeGridIndex];
     return (
       <GridModal
         isOpen={this.state.gridModalIsOpen}
         closeModal={this.closeModal}
-        post={activePost}
         nextGridClick={this.nextGridClick}
         prevGridClick={this.prevGridClick}
       />
     );
   }
 
+
   render() {
-    return (
-      <div className="PhotoGrid__root">
-        <Profile user={this.props.user} posts={this.state.posts} handleLogout={this.props.handleLogout} />
-        <div className="PhotoGrid__grid-container Locations__photo-gallery">
-          <GridList posts={this.state.posts} userId={this.props.match.params.user_id} />
+    console.log(this.props)
+    let profileSwitch;
+    if (this.state.editProfile) {
+      profileSwitch =
+        <div className="sign-in__root container">
+          <div className="row">
+            <div className="six columns offset-by-three">
+              <div className="SignIn__form-wrapper">
+                <EditProfileForm user={this.state.user} setUser={this.props.setUser} updateEditProfile={this.updateEditProfile}
+                  fetchUser={this.fetchUser} />
+              </div>
+            </div>
+          </div>
         </div>
-        {this.renderGridModal()}
-      </div>
+    } else {
+      profileSwitch =
+        <div className="PhotoGrid__root">
+          <Profile user={this.state.user} posts={this.state.posts} handleLogout={this.props.handleLogout} updateEditProfile={this.updateEditProfile} />
+          <div className="PhotoGrid__grid-container Locations__photo-gallery">
+            <GridList posts={this.state.posts} userId={this.props.match.params.user_id} />
+          </div>
+          {/* {this.renderGridModal()} */}
+        </div>
+    }
+
+    return (
+      profileSwitch
     );
+
+
+
   }
 }
 
-
-//   render() {
-//     console.log('PROFILEcontainer>>', this.props)
-//     let gridModal;
-//     if (this.props.user.user) {
-//       gridModal = (
-//         <gridModal
-//           posts={this.state.posts}
-//           fetchPosts={this.fetchPosts}
-//           userId={this.props.user.user.id}
-//           isOpen={this.state.gridModalIsOpen}
-//           closeModal={this.closeModal}
-//           onRequestClose={this.closeModal}
-//         />
-//       )
-//     }
-//  
 
 export default ProfileContainer;
 

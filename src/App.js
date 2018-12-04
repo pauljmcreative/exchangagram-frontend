@@ -44,14 +44,14 @@ class App extends Component {
   }
 
   render() {
-    // console.log(this.state);
+    // console.log("APP STATE", this.state);
     return (
       <div className="MainLayout__root">
         <Header isLoggedIn={this.state.isLoggedIn} user={this.state.user} />
         <Switch>
           <Route exact path="/" render={props => <SignIn {...props} setUser={this.setUser} />} />
           <Route exact path="/signup" render={props => <SignUp {...props} setUser={this.setUser} />} />
-          <Route path="/home" render={props => <Home user={this.state.user} handleLogout={this.handleLogout} />} />
+          <Route path="/home" render={props => <Home user={this.state.user} setUser={this.setUser} handleLogout={this.handleLogout} />} />
         </Switch>
       </div>
     );

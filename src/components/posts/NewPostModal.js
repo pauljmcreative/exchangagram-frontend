@@ -1,5 +1,6 @@
 import React, { Component } from 'react';
 import Modal from 'react-modal';
+// import PictureDropzone from '../PictureDropzone';
 import PostsAPI from '../../models/PostsAPI';
 import ImagesAPI from '../../models/ImagesAPI';
 
@@ -72,6 +73,7 @@ class NewPostModal extends Component {
 
 
   render() {
+    // console.log('POST MODAL USERID', this.props.userId)
     return (
       <Modal
         isOpen={this.props.isOpen}
@@ -112,7 +114,6 @@ class NewPostModal extends Component {
           className="PostForm__button"
           type="submit">
           Submit
-          {/* <i className="fa fa-spinner fa-pulse fa-3x fa-fw PostForm__spinner" /> */}
         </button>
 
       </Modal>

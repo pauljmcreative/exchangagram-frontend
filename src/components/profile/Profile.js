@@ -3,11 +3,6 @@ import UsersAPI from '../../models/UsersAPI';
 import AvatarsAPI from '../../models/AvatarsAPI';
 
 
-
-// getImageUrl = () => {
-//   ${this.props.user.user.imageUrl ? ${imageUrl} : 'noImage';
-// }
-
 class Profile extends Component {
   state = {
     avatar: '',
@@ -16,7 +11,7 @@ class Profile extends Component {
 
   componentDidMount = () => {
     if (this.props.user._id) {
-      this.fetchAvatar(this.props.avatar._id);
+      // this.fetchAvatar(this.props.avatar._id);
       this.fetchUserById(this.props.user._id);
     }
   }
@@ -39,14 +34,30 @@ class Profile extends Component {
       })
   }
 
+  // when we get to profile page
+  // check user_loggedin_id and profile_id (id in the url)
+  // if user_loggedin_id === profile_id (console.log(this.props) - look in 'match')
+  // render edit profile and logout button
 
+  // else
+  // render 'following-data'
+  //axios call to backend with both IDS
+  //if follow model EXISTS 
+  //(if profile_id === followee_id && user_loggedin_id === follower_id )
+  //following-data = "Currently Following"
+  //else
+  //following-data = "Click to follow"
+  // following button onclick
+  //grab FOLLOWEE_ID from profile_id
+  //grab FOLLOWER_ID from user_loggedin_id
+  //axios call to create route with those 2 IDs
 
 
   render() {
-    console.log('PROFILEuser>>', this.props.user)
+    console.log("PROFILEprops", this.props)
     let profileData;
-    if (this.props.user.user) {
-      const user = this.props.user.user;
+    if (this.props.user) {
+      const user = this.props.user;
       profileData = (
         <div className="row Profile__user-info-container">
           <div className="four columns">
@@ -72,6 +83,8 @@ class Profile extends Component {
               </div>
             </div>
           </div>
+
+          <button onClick={this.props.updateEditProfile}>Edit Profile</button>
           <button onClick={this.props.handleLogout}>logout</button>
         </div>
       )

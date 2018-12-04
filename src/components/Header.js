@@ -7,7 +7,6 @@ import '../styles/Header.css';
 class Header extends Component {
 
   render() {
-    console.log("HEADER>>", this.props.isLoggedIn)
     let links;
     if (this.props.isLoggedIn) {
       links =

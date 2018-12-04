@@ -57,7 +57,7 @@ class Grid extends Component {
   render() {
     return (
       <div className="PhotoThumbnailItem__root">
-        <img onClick={this.openModal} src={`http://localhost:4000/image/${this.state.postImage}`} />
+        <img onClick={this.openModal} src={`http://localhost:4000/image/${this.state.postImage}`} style={{ maxWidth: '100px', maxHeight: '100px' }} alt="Post" />
         <GridModal
           post={this.state.post}
           isOpen={this.state.gridModalIsOpen}
@@ -89,3 +89,5 @@ export default Grid;
     </div>
   </div>
 </div> */}
+
+

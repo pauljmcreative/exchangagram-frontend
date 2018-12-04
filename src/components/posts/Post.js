@@ -7,13 +7,6 @@ import '../../styles/Post.css';
 import PostsAPI from '../../models/PostsAPI';
 
 
-// for each individual post
-//component did mount axios call
-//retrieve image model whos post id match current post id
-
-//src="localhost:4000/images/" + this.state.imageName
-
-
 class Post extends Component {
   state = {
     postImage: '',
@@ -63,10 +56,10 @@ class Post extends Component {
 
   render() {
     // console.log('POSTstate>,', this.state);
-    // console.log("POST PROPS>", this.props.post._id)
+    // console.log("POST PROPS>", this.props)
     // console.log('singlePOSTuser:', this.props.post.user.username)
     // console.log('singlePOSTpost:', this.props.posts.data)
-    const user = this.props.post.user;
+    const user = this.props.user.user;
     // console.log(username)
     return (
       <article className="Post__root">
@@ -75,7 +68,7 @@ class Post extends Component {
             <img
               src="#"
               className="Post-header__avatar-img"
-              alt="profile"
+              alt="Profile"
             />
           </div>
           <div className="Post-header__metadata-container">
@@ -87,7 +80,7 @@ class Post extends Component {
           </div>
         </div>
         <div className='Post__body'>
-          <img src={`http://localhost:4000/image/${this.state.postImage}`} />
+          <img src={`http://localhost:4000/image/${this.state.postImage}`} alt="Post" />
           <div>{this.state.post.location}</div>
           <div>{this.state.post.caption}</div>
         </div>
