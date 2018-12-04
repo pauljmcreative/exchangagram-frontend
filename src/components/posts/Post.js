@@ -15,8 +15,16 @@ class Post extends Component {
 
   componentDidMount = () => {
     if (this.props.post._id) {
-      this.fetchImage(this.props.post._id);
-      this.fetchPostById(this.props.post._id);
+      Promise.all([
+        this.fetchImage(this.props.post._id),
+        this.fetchPostById(this.props.post._id)
+      ])
+        .then(res => {
+          console.log("completed all promises")
+        })
+        .catch(err => {
+          console.warn("Error! Something went wrong.", err);
+        })
     }
   }
 
@@ -31,6 +39,10 @@ class Post extends Component {
 
   fetchImage = (postId) => {
     ImagesAPI.image(postId)
+      // .then(res => {
+      //   console.log(res.data)
+      //   debugger;
+      // })
       .then(res => {
         this.setState({
           postImage: res.data[0].imageName
@@ -59,8 +71,11 @@ class Post extends Component {
     // console.log("POST PROPS>", this.props)
     // console.log('singlePOSTuser:', this.props.post.user.username)
     // console.log('singlePOSTpost:', this.props.posts.data)
-    const user = this.props.user.user;
     // console.log(username)
+
+    const { _id, username } = this.props.post.user;
+
+
     return (
       <article className="Post__root">
         <div className="Post-header">
@@ -73,7 +88,7 @@ class Post extends Component {
           </div>
           <div className="Post-header__metadata-container">
             <div className="Post-header__username">
-              <Link to={`/home/profile/${user._id}`}>{user.username}</Link>
+              <Link to={`/home/profile/${_id}`}>{username}</Link>
             </div>
           </div>
           <div className="Post-header__timestamp">

@@ -62,15 +62,16 @@ class NewPostModal extends Component {
     PostsAPI.create(postData, this.props.userId)
       .then(postres => {
         console.log('post res:', postres)
+        debugger;
         ImagesAPI.create(imageData, postres.data._id)
           .then(imageres => {
             console.log('imageRes:', imageres)
             this.props.closeModal();
             this.props.fetchPosts();
           })
+          .catch(err => console.log("Something went wrong: ", err))
       })
   }
-
 
   render() {
     // console.log('POST MODAL USERID', this.props.userId)
