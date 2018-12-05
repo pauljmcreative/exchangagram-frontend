@@ -3,6 +3,7 @@ import { withRouter } from 'react-router-dom';
 import UsersAPI from '../../models/UsersAPI';
 import jwt_decode from 'jwt-decode';
 import '../../styles/SignUpForm.css';
+import setAuthToken from '../../utils/setAuthToken';
 
 class SignUpForm extends Component {
   state = {
@@ -32,6 +33,7 @@ class SignUpForm extends Component {
         .then(res => {
           // console.log(res);
           localStorage.setItem('egt', res.data.token);
+          setAuthToken(res.data.token);
           const decoded = jwt_decode(res.data.token);
           // console.log(decoded);
           this.props.setUser(decoded);

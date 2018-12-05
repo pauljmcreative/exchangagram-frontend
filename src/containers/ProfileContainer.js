@@ -21,6 +21,13 @@ class ProfileContainer extends Component {
     this.fetchUser(this.props.match.params.user_id);
   }
 
+  componentDidUpdate = (prevProps, prevState) => {
+    if (prevProps !== this.props) {
+      this.fetchPosts();
+      this.fetchUser(this.props.match.params.user_id);
+    }
+  }
+
   fetchPosts = () => {
     PostsAPI.index()
       .then(res => {
@@ -68,7 +75,7 @@ class ProfileContainer extends Component {
 
 
   render() {
-    // console.log(this.props)
+    // console.log("PROFCONT..", this.state.user)
     let profileSwitch;
     if (this.state.editProfile) {
       profileSwitch =

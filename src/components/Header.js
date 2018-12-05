@@ -52,7 +52,7 @@ class Header extends Component {
                   <i className="fa fa-instagram Header__instagram-icon" aria-hidden="true" /> Exchangeagram</NavLink>
               </h1>
             </div>
-            <nav className="offset-by-seven two columns">
+            <nav className="offset-by-five four columns">
               {links}
             </nav>
           </div>

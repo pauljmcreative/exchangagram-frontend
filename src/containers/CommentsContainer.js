@@ -8,9 +8,9 @@ class CommentsContainer extends Component {
     comments: [],
   };
 
-  componentDidMount = () => {
-    this.fetchComments(this.props.post);
-  }
+  // componentDidMount = () => {
+  //   this.fetchComments(this.props.post);
+  // }
 
   componentDidUpdate = (prevProps, prevState) => {
     if (prevProps !== this.props) {

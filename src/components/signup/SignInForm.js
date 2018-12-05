@@ -3,6 +3,7 @@ import { withRouter } from 'react-router-dom';
 import jwt_decode from 'jwt-decode';
 import '../../styles/SignInForm.css';
 import UsersAPI from '../../models/UsersAPI';
+import setAuthToken from '../../utils/setAuthToken';
 
 class SignInForm extends Component {
   state = {
@@ -27,6 +28,7 @@ class SignInForm extends Component {
       .then(res => {
         localStorage.setItem('egt', res.data.token);
         const decoded = jwt_decode(res.data.token);
+        setAuthToken(res.data.token);
         // console.log('decoded>>', decoded);
         this.props.setUser(decoded);
       })

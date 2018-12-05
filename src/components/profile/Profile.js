@@ -1,6 +1,8 @@
 import React, { Component } from 'react';
 import UsersAPI from '../../models/UsersAPI';
 import AvatarsAPI from '../../models/AvatarsAPI';
+import jwt_decode from 'jwt-decode';
+
 
 
 class Profile extends Component {
@@ -39,17 +41,10 @@ class Profile extends Component {
           avatar: res.data[0].avatarName
         })
       })
+      .catch(res => console.log("error", (err)))
   }
 
-  // when we get to profile page
-  // check user_loggedin_id and profile_id (id in the url)
 
-  // if user_loggedin_id === profile_id (console.log(this.props) - look in 'match')
-  // if(this.props.user.user.id === this.props.match.match._id)
-  // render edit profile and logout button
-
-  // else
-  // render 'following-data'
   //axios call to backend with both IDS
   //if follow model EXISTS 
 
@@ -66,10 +61,11 @@ class Profile extends Component {
 
   render() {
     // console.log("PROFILE", this.state)
-    console.log("PROFILE", this.props.user._id)
+    // console.log("PROFILE", this.props.user._id)
     let profileData;
     if (this.props.user) {
       const user = this.props.user;
+      const decoded = jwt_decode(localStorage.getItem("egt"));
       profileData = (
         <div className="row Profile__user-info-container">
           <div className="four columns">
@@ -91,9 +87,11 @@ class Profile extends Component {
               </div>
             </div>
           </div>
-
-          <button onClick={this.props.updateEditProfile}>Edit Profile</button>
-          <button onClick={this.props.handleLogout}>logout</button>
+          {decoded.user.id === this.props.match.params.user_id ?
+            <React.Fragment>
+              <button onClick={this.props.updateEditProfile}>Edit Profile</button>
+              <button onClick={this.props.handleLogout}>logout</button>
+            </React.Fragment> : <button>Follow</button>}
         </div>
       )
     }

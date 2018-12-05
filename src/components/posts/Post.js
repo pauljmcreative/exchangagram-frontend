@@ -82,8 +82,8 @@ class Post extends Component {
 
 
   render() {
-    console.log('POSTstate>,', this.state);
-    console.log("POST PROPS>", this.props)
+    // console.log('POSTstate>,', this.state);
+    // console.log("POST PROPS>", this.props.post.user)
     // console.log('singlePOSTuser:', this.props.post.user.username)
     // console.log('singlePOSTpost:', this.props.posts.data)
 

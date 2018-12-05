@@ -8,14 +8,14 @@ class CommentBox extends Component {
   };
 
   handleCommentChange = (e) => {
-    console.log('comment event:', e);
+    // console.log('comment event:', e);
     this.setState({ commentBody: e.target.value });
   }
 
 
   handleCommentKeyDown = (event) => {
     event.persist();
-    console.log('Comment submitted!!!!', event.keyCode);
+    // console.log('Comment submitted!!!!', event.keyCode);
     if (event.keyCode === 13 && this.state.commentBody.trim().length > 0) {
       let comment = { body: this.state.commentBody };
       CommentsAPI.create(comment, this.props.userid, this.props.post)
@@ -30,7 +30,7 @@ class CommentBox extends Component {
 
 
   render() {
-    console.log("comment box", this.props)
+    // console.log("comment box", this.props)
     return (
       <div className="CommentBox__root">
         <input

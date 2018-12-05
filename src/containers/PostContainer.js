@@ -5,11 +5,6 @@ import PostsList from '../components/posts/PostsList';
 import PostsAPI from '../models/PostsAPI';
 
 class FeedContainer extends Component {
-  static defaultProps = {
-    user: {
-    }
-  }
-
   state = {
     newPostModalIsOpen: false,
     posts: [],

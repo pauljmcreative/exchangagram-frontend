@@ -51,6 +51,7 @@ class EditProfileForm extends Component {
   }
 
   render() {
+    // console.log("EDIT PROF", this.props.user.username)
     return (
       <React.Fragment>
         <form className="SignInForm__root">
@@ -59,7 +60,7 @@ class EditProfileForm extends Component {
               onChange={this.handleEditProfileChange}
               name="name"
               type="text"
-              placeholder="Name"
+              placeholder={this.props.user.name}
               className="SignInForm__input"
             />
           </fieldset>
@@ -68,7 +69,7 @@ class EditProfileForm extends Component {
               onChange={this.handleEditProfileChange}
               name="username"
               type="text"
-              placeholder="Username"
+              placeholder={this.props.user.username}
               className="SignInForm__input"
             />
           </fieldset>
@@ -77,7 +78,7 @@ class EditProfileForm extends Component {
               onChange={this.handleEditProfileChange}
               name="email"
               type="email"
-              placeholder="email"
+              placeholder={this.props.user.email}
               className="SignInForm__input"
             />
           </fieldset>
