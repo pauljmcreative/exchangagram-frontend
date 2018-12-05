@@ -20,6 +20,7 @@ class App extends Component {
       this.props.history.push('/'); //this is how to redirect to signin page
     } else {
       const decoded = jwt_decode(localStorage.getItem('egt'))
+      console.log('LOGGED USER ', decoded)
       this.setState({
         isLoggedIn: true,
         user: decoded,

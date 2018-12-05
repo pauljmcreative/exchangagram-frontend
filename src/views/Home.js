@@ -11,7 +11,6 @@ class Home extends Component {
     // console.log('PROFILEhome', this.props)
     return (
       <div className="Home__root container">
-        <h1>MAIN PAGE</h1>
         <Switch>
           <Route path="/home/feed" render={props => <PostContainer {...props} user={this.props.user} />} />
           <Route path="/home/profile/:user_id" render={props => <ProfileContainer {...props} user={this.props.user} setUser={this.props.setUser} handleLogout={this.props.handleLogout} />} />

@@ -3,6 +3,7 @@ import Modal from 'react-modal';
 // import PictureDropzone from '../PictureDropzone';
 import PostsAPI from '../../models/PostsAPI';
 import ImagesAPI from '../../models/ImagesAPI';
+import '../../styles/NewPostModal.css';
 
 const customStyles = {
   overlay: {
@@ -81,6 +82,7 @@ class NewPostModal extends Component {
         <form className="PostForm__root">
           <fieldset>
             <input
+              className="NewPostModal__input"
               onChange={this.handlePostChange}
               name="location"
               type="text"
@@ -90,6 +92,7 @@ class NewPostModal extends Component {
           </fieldset>
           <fieldset>
             <input
+              className="NewPostModal__input"
               onChange={this.handlePostChange}
               name="caption"
               type="text"
@@ -100,20 +103,20 @@ class NewPostModal extends Component {
         </form>
         <form id="image-upload" encType="multipart/form-data">
           <fieldset>
-            <div class="btn grey">
-              <span>File</span>
-              <input name="myImage" type="file" />
+            <div>
+              <span>Image File</span>
+              <input className="NewPostModal__fileButton" name="myImage" type="file" />
             </div>
           </fieldset>
         </form>
         <button
           onClick={this.handlePostSubmit}
-          className="PostForm__button"
+          className="NewPostModal__button"
           type="submit">
           Submit
         </button>
 
-      </Modal>
+      </Modal >
     );
   }
 }

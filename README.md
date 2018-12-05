@@ -1,3 +1,66 @@
+# Exchangeagram -- now your pictures can live on-the-line!!!
+[Exchangagram clip](https://www.youtube.com/watch?v=JfhV_ezOxgA)
+
+## Introduction
+> I created a image-forward social media app, recreating the functionality of instagram. This is a full stack web application using a react front-end and node.js back-end.
+
+## Tech Stack:
+* React
+* Node.js
+* Express
+* MongoDB
+* Mongoose
+* json web tokens
+* bcrypt
+* multer
+
+## Features
+* User account creation/storage with password hashing.
+* User authentication via json web tokens on sign in or sign up.
+* in-line alerts for any form errors.
+* Default user profile images with the option to upload and store new ones.
+* Scrollable post feed that users can post to/comment on existing posts.
+* Abilitiy to like and unlike posts.
+* Follower and following relationships with other users.
+* Users can view and edit their own profile page.
+* Users can view other users profile pages but display changes to show a "follow" button.
+* New post modal when adding posts.
+* Update profile modal when updating profile.
+* Axios calls used virtually everywhere.
+
+## Wireframes
+![alt text](/wireframes/signin.png)
+
+![alt text](/wireframes/signup.png)
+
+![alt text](/wireframes/feed.png)
+
+![alt text](/wireframes/new-post-modal.png)
+
+![alt text](/wireframes/profile.png)
+
+![alt text](/wireframes/edit-profile.png)
+
+![alt text](/wireframes/profile-img-modal.png)
+
+
+## Author
+* [Paul Mourraille](https://github.com/pmourraille)
+
+## Acknowledgments
+> [Kenny Bushman](https://github.com/kbbushman) and [Brock Whitbread-Cole](https://github.com/brockwc) and * [Gabriel Ng](https://github.com/gabe-ng) for countless hours of problem solving.
+
+
+
+## Future additions
+* Incorporating filters into post uploads.
+* adding logic to likes to allow to only select once per user.
+* Integrating redux to handle state. for answering all my questions.
+
+
+
+
+
 This project was bootstrapped with [Create React App](https://github.com/facebook/create-react-app).
 
 ## Available Scripts
@@ -27,18 +90,3 @@ Your app is ready to be deployed!
 
 See the section about [deployment](https://facebook.github.io/create-react-app/docs/deployment) for more information.
 
-### `npm run eject`
-
-**Note: this is a one-way operation. Once you `eject`, you can’t go back!**
-
-If you aren’t satisfied with the build tool and configuration choices, you can `eject` at any time. This command will remove the single build dependency from your project.
-
-Instead, it will copy all the configuration files and the transitive dependencies (Webpack, Babel, ESLint, etc) right into your project so you have full control over them. All of the commands except `eject` will still work, but they will point to the copied scripts so you can tweak them. At this point you’re on your own.
-
-You don’t have to ever use `eject`. The curated feature set is suitable for small and middle deployments, and you shouldn’t feel obligated to use this feature. However we understand that this tool wouldn’t be useful if you couldn’t customize it when you are ready for it.
-
-## Learn More
-
-You can learn more in the [Create React App documentation](https://facebook.github.io/create-react-app/docs/getting-started).
-
-To learn React, check out the [React documentation](https://reactjs.org/).

@@ -23,7 +23,7 @@ class Post extends Component {
         this.fetchAvatar(this.props.user.user.id)
       ])
         .then(res => {
-          console.log("completed all promises")
+          console.log("completed all promises", res)
         })
         .catch(err => {
           console.warn("Error! Something went wrong.", err);
@@ -45,12 +45,14 @@ class Post extends Component {
     ImagesAPI.image(postId)
       // .then(res => {
       //   console.log(res.data)
-      //   debugger;
       // })
       .then(res => {
-        this.setState({
-          postImage: res.data[0].imageName
-        })
+        console.log('FETCH IMAGE', res.data)
+        if (res.data.imageName) {
+          this.setState({
+            postImage: res.data.imageName
+          })
+        }
       })
   }
 
@@ -82,7 +84,7 @@ class Post extends Component {
 
 
   render() {
-    // console.log('POSTstate>,', this.state);
+    console.log('POSTstate>,', this.props);
     // console.log("POST PROPS>", this.props.post.user)
     // console.log('singlePOSTuser:', this.props.post.user.username)
     // console.log('singlePOSTpost:', this.props.posts.data)
@@ -128,7 +130,7 @@ class Post extends Component {
               </button>
             </div>
             <div className="Post__comment-box">
-              <CommentsContainer post={this.state.post._id} userid={this.props.post.user._id} />
+              <CommentsContainer post={this.state.post._id} user={this.props.user} />
             </div>
           </div>
         </div>

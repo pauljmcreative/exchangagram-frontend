@@ -5,9 +5,10 @@ import { Link } from 'react-router-dom';
 
 class Comment extends Component {
   render() {
+    console.log("COMMENTprops", this.props)
     return (
       <div className="CommentItem__root">
-        <strong><Link to={`/home/profile/${this.props.comment.user._id}`} className="CommentItem__username">{this.props.comment.user.username}</Link></strong>
+        <strong><Link to={`/home/profile/${this.props.user.user._id}`} className="CommentItem__username">{this.props.user.user.username}</Link></strong>
         <p>{this.props.comment.body}</p>
         <p>{this.props.comment.dateCreated}</p>
 

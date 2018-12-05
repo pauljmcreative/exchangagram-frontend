@@ -17,6 +17,7 @@ class CommentBox extends Component {
     event.persist();
     // console.log('Comment submitted!!!!', event.keyCode);
     if (event.keyCode === 13 && this.state.commentBody.trim().length > 0) {
+      console.log('Comment submitted!!!!', event.keyCode);
       let comment = { body: this.state.commentBody };
       CommentsAPI.create(comment, this.props.userid, this.props.post)
         .then(res => {
@@ -30,7 +31,7 @@ class CommentBox extends Component {
 
 
   render() {
-    // console.log("comment box", this.props)
+    console.log("comment box", this.props)
     return (
       <div className="CommentBox__root">
         <input

@@ -1,4 +1,5 @@
 import React from 'react';
+import { Link } from 'react-router-dom';
 import SignInForm from '../components/signup/SignInForm';
 import FormDivider from '../components/signup/FormDivider';
 import '../styles/SignIn.css';
@@ -13,6 +14,7 @@ const SignIn = (props) => {
             <h1>Sign In!!!</h1>
             <SignInForm setUser={props.setUser} />
             <FormDivider />
+            <Link className="signIn__link" to="/signup"><h4>sign up</h4></Link>
           </div>
         </div>
       </div>

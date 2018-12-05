@@ -29,12 +29,17 @@ class CommentsContainer extends Component {
 
 
   render() {
-    console.log(this.state)
+    console.log("CCprops", this.props)
+    console.log("CC STATE", this.state)
+
+    // const commentBox = this.state.comments.length > 0
+    //   ? <CommentBox post={this.props.post} fetchComments={this.fetchComments} userid={this.state.comments[0].user._id} />
+    //   : null;
+
     return (
       <div>
-        <h1>COMMENTS CONTAINER</h1>
-        <CommentsList comments={this.state.comments} />
-        <CommentBox post={this.props.post} fetchComments={this.fetchComments} userid={this.props.userid} />
+        <CommentsList comments={this.state.comments} user={this.props.user} />
+        <CommentBox post={this.props.post} fetchComments={this.fetchComments} user={this.props.user} />
       </div>
     )
   }
@@ -43,21 +48,3 @@ class CommentsContainer extends Component {
 
 export default CommentsContainer;
 
-
-
-
-// renderComments() {
-//   return (
-//     <div className="Post__comments">
-//       {this.props.comments.map(comment => (
-//         <CommentItem
-//           key={comment.id}
-//           username={comment.username}
-//           body={comment.body}
-//           deletable={this.props.currentUser.username === comment.username}
-//           onDelete={() => this.props.onCommentDelete(comment.id)}
-//         />
-//       ))}
-//     </div>
-//   );
-// }
