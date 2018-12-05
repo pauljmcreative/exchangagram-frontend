@@ -20,7 +20,7 @@ class Header extends Component {
             </NavLink>
           </li>
           <li className="Header__nav-link Header__notification-nav">
-            <a className="NotificationButton__button" href="#">
+            <a className="NotificationButton__button" href="/notifications">
               <i className="fa fa-heart-o Header__nav-icon" aria-hidden="true" />
             </a>
           </li>

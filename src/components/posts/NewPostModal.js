@@ -32,11 +32,6 @@ const customStyles = {
 }
 
 class NewPostModal extends Component {
-  static defaultProps = {
-    user: {
-    }
-  }
-
   state = {
     location: '',
     caption: '',
@@ -46,7 +41,6 @@ class NewPostModal extends Component {
     this.setState({
       [e.target.name]: e.target.value
     });
-    console.log(this.state)
   }
 
   handlePostSubmit = (e) => {
@@ -62,7 +56,7 @@ class NewPostModal extends Component {
     PostsAPI.create(postData, this.props.userId)
       .then(postres => {
         console.log('post res:', postres)
-        debugger;
+        // debugger;
         ImagesAPI.create(imageData, postres.data._id)
           .then(imageres => {
             console.log('imageRes:', imageres)
@@ -80,7 +74,9 @@ class NewPostModal extends Component {
         isOpen={this.props.isOpen}
         onRequestClose={this.props.onRequestClose}
         contentLabel="NewPostModal"
-        style={customStyles}>
+        style={customStyles}
+        ariaHideApp={false}>
+
 
         <form className="PostForm__root">
           <fieldset>

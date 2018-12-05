@@ -1,6 +1,7 @@
 import React, { Component } from 'react';
 import { withRouter } from 'react-router-dom';
 import jwt_decode from 'jwt-decode';
+import AvatarsAPI from '../../models/AvatarsAPI';
 import '../../styles/SignInForm.css';
 import UsersAPI from '../../models/UsersAPI';
 
@@ -23,12 +24,21 @@ class EditProfileForm extends Component {
       username: this.state.username,
       email: this.state.email,
       name: this.state.name,
-    };
+    }
+    const avatarData = new FormData(document.querySelector('#avatar-upload'));
+
 
     UsersAPI.update(this.props.user._id, profileData)
       .then(res => {
         localStorage.setItem('egt', res.data.token);
         const decoded = jwt_decode(res.data.token);
+        AvatarsAPI.create(avatarData, decoded.user.id)
+          .then(avatarRes => {
+            console.log(avatarRes)
+          })
+          .catch(err => {
+            console.log("Avatar did not load", (err))
+          })
         this.props.setUser(decoded);
         this.props.fetchUser(decoded.user.id);
         this.props.updateEditProfile();
@@ -72,7 +82,7 @@ class EditProfileForm extends Component {
             />
           </fieldset>
         </form>
-        <form id="image-upload" encType="multipart/form-data">
+        <form id="avatar-upload" encType="multipart/form-data">
           <fieldset>
             <div class="btn grey">
               <span>File</span>

@@ -2,14 +2,16 @@ import React, { Component } from 'react';
 import { Link } from 'react-router-dom';
 import ImagesAPI from '../../models/ImagesAPI';
 import LikeButton from '../LikeButton';
-import CommentBox from '../comments/CommentBox';
+import CommentsContainer from '../../containers/CommentsContainer';
 import '../../styles/Post.css';
 import PostsAPI from '../../models/PostsAPI';
+import AvatarsAPI from '../../models/AvatarsAPI';
 
 
 class Post extends Component {
   state = {
     postImage: '',
+    avatar: '',
     post: {},
   }
 
@@ -17,7 +19,8 @@ class Post extends Component {
     if (this.props.post._id) {
       Promise.all([
         this.fetchImage(this.props.post._id),
-        this.fetchPostById(this.props.post._id)
+        this.fetchPostById(this.props.post._id),
+        this.fetchAvatar(this.props.user.user.id)
       ])
         .then(res => {
           console.log("completed all promises")
@@ -27,6 +30,7 @@ class Post extends Component {
         })
     }
   }
+
 
   fetchPostById = (postId) => {
     PostsAPI.show(postId)
@@ -50,6 +54,17 @@ class Post extends Component {
       })
   }
 
+  fetchAvatar = (avatarId) => {
+    console.log("POST FETCHING")
+    AvatarsAPI.avatar(avatarId)
+      .then(res => {
+        console.log("FETCH", res)
+        this.setState({
+          avatar: res.data[0].avatarName
+        })
+      })
+  }
+
   increaseLikes = () => {
     let likeCount = this.state.post.likes + 1;
     let increaseLikes = { likes: likeCount };
@@ -67,11 +82,10 @@ class Post extends Component {
 
 
   render() {
-    // console.log('POSTstate>,', this.state);
-    // console.log("POST PROPS>", this.props)
+    console.log('POSTstate>,', this.state);
+    console.log("POST PROPS>", this.props)
     // console.log('singlePOSTuser:', this.props.post.user.username)
     // console.log('singlePOSTpost:', this.props.posts.data)
-    // console.log(username)
 
     const { _id, username } = this.props.post.user;
 
@@ -80,11 +94,11 @@ class Post extends Component {
       <article className="Post__root">
         <div className="Post-header">
           <div className="Post-header__avatar-container">
-            <img
-              src="#"
+            {this.state.avatar ? <img
+              src={`http://localhost:4000/avatars/${this.state.avatar}`}
               className="Post-header__avatar-img"
               alt="Profile"
-            />
+            /> : null}
           </div>
           <div className="Post-header__metadata-container">
             <div className="Post-header__username">
@@ -95,7 +109,7 @@ class Post extends Component {
           </div>
         </div>
         <div className='Post__body'>
-          <img src={`http://localhost:4000/image/${this.state.postImage}`} alt="Post" />
+          {this.state.postImage ? <img src={`http://localhost:4000/image/${this.state.postImage}`} alt="Post" /> : null}
           <div>{this.state.post.location}</div>
           <div>{this.state.post.caption}</div>
         </div>
@@ -114,7 +128,7 @@ class Post extends Component {
               </button>
             </div>
             <div className="Post__comment-box">
-              <CommentBox />
+              <CommentsContainer post={this.state.post._id} userid={this.props.post.user._id} />
             </div>
           </div>
         </div>

@@ -94,7 +94,6 @@ class SignUpForm extends Component {
 
 
   render() {
-    console.log(this.props);
     return (
       <form className="SignUpForm__root">
         <fieldset>

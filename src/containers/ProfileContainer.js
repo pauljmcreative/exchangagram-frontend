@@ -68,7 +68,7 @@ class ProfileContainer extends Component {
 
 
   render() {
-    console.log(this.props)
+    // console.log(this.props)
     let profileSwitch;
     if (this.state.editProfile) {
       profileSwitch =
@@ -85,11 +85,10 @@ class ProfileContainer extends Component {
     } else {
       profileSwitch =
         <div className="PhotoGrid__root">
-          <Profile user={this.state.user} posts={this.state.posts} handleLogout={this.props.handleLogout} updateEditProfile={this.updateEditProfile} />
+          <Profile {...this.props} user={this.state.user} posts={this.state.posts} updateEditProfile={this.updateEditProfile} />
           <div className="PhotoGrid__grid-container Locations__photo-gallery">
             <GridList posts={this.state.posts} userId={this.props.match.params.user_id} />
           </div>
-          {/* {this.renderGridModal()} */}
         </div>
     }
 

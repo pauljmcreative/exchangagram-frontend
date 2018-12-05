@@ -11,7 +11,14 @@ class Profile extends Component {
 
   componentDidMount = () => {
     if (this.props.user._id) {
-      // this.fetchAvatar(this.props.avatar._id);
+      this.fetchAvatar(this.props.user._id);
+      this.fetchUserById(this.props.user._id);
+    }
+  }
+
+  componentDidUpdate = (prevProps, prevState) => {
+    if (prevProps !== this.props) {
+      this.fetchAvatar(this.props.user._id);
       this.fetchUserById(this.props.user._id);
     }
   }
@@ -36,14 +43,18 @@ class Profile extends Component {
 
   // when we get to profile page
   // check user_loggedin_id and profile_id (id in the url)
+
   // if user_loggedin_id === profile_id (console.log(this.props) - look in 'match')
+  // if(this.props.user.user.id === this.props.match.match._id)
   // render edit profile and logout button
 
   // else
   // render 'following-data'
   //axios call to backend with both IDS
   //if follow model EXISTS 
-  //(if profile_id === followee_id && user_loggedin_id === follower_id )
+
+  // (if profile_id === followee_id && user_loggedin_id === this.props.match.params.user_id )
+
   //following-data = "Currently Following"
   //else
   //following-data = "Click to follow"
@@ -54,7 +65,8 @@ class Profile extends Component {
 
 
   render() {
-    console.log("PROFILEprops", this.props)
+    // console.log("PROFILE", this.state)
+    console.log("PROFILE", this.props.user._id)
     let profileData;
     if (this.props.user) {
       const user = this.props.user;
@@ -62,16 +74,12 @@ class Profile extends Component {
         <div className="row Profile__user-info-container">
           <div className="four columns">
             <div className="Profile__avatar-img-wrapper">
-              <img
-                src={`http://localhost:4000/image/${this.state.postImage}`}
+              {this.state.avatar ? <img
+                src={`http://localhost:4000/avatars/${this.state.avatar}`}
                 className="Profile__avatar-img"
                 alt='profile'
-              />
-              <img
-                src='../images.no-image.jpg'
-                className="Profile__avatar-img"
-                alt='profile'
-              />
+                style={{ width: '100px', height: '100px' }}
+              /> : null}
             </div>
           </div>
           <div className="five columns">

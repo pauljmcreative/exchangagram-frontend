@@ -132,7 +132,8 @@ class GridModal extends Component {
         isOpen={this.props.isOpen}
         onRequestClose={this.props.onRequestClose}
         contentLabel="GridModal"
-        style={this.getCustomStyles()}>
+        style={this.getCustomStyles()}
+        ariaHideApp={false}>
         <div>GRID MODAL</div>
       </Modal>
     );
