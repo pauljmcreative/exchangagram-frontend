@@ -8,7 +8,7 @@ class Comment extends Component {
     console.log("COMMENTprops", this.props)
     return (
       <div className="CommentItem__root">
-        <strong><Link to={`/home/profile/${this.props.user.user._id}`} className="CommentItem__username">{this.props.user.user.username}</Link></strong>
+        <strong><Link to={`/home/profile/${this.props.user._id}`} className="CommentItem__username">{this.props.user.username}</Link></strong>
         <p>{this.props.comment.body}</p>
         <p>{this.props.comment.dateCreated}</p>
 

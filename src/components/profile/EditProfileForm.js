@@ -57,28 +57,28 @@ class EditProfileForm extends Component {
         <form className="SignInForm__root">
           <fieldset>
             <input
+              defaultValue={this.props.user.name}
               onChange={this.handleEditProfileChange}
               name="name"
               type="text"
-              placeholder={this.props.user.name}
               className="SignInForm__input"
             />
           </fieldset>
           <fieldset>
             <input
+              defaultValue={this.props.user.username}
               onChange={this.handleEditProfileChange}
               name="username"
               type="text"
-              placeholder={this.props.user.username}
               className="SignInForm__input"
             />
           </fieldset>
           <fieldset>
             <input
+              defaultValue={this.props.user.email}
               onChange={this.handleEditProfileChange}
               name="email"
               type="email"
-              placeholder={this.props.user.email}
               className="SignInForm__input"
             />
           </fieldset>

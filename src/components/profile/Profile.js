@@ -13,14 +13,14 @@ class Profile extends Component {
 
   componentDidMount = () => {
     if (this.props.user._id) {
-      // this.fetchAvatar(this.props.user._id);
+      this.fetchAvatar(this.props.user._id);
       this.fetchUserById(this.props.user._id);
     }
   }
 
   componentDidUpdate = (prevProps, prevState) => {
     if (prevProps !== this.props) {
-      // this.fetchAvatar(this.props.user._id);
+      this.fetchAvatar(this.props.user._id);
       this.fetchUserById(this.props.user._id);
     }
   }
@@ -34,19 +34,22 @@ class Profile extends Component {
       })
   }
 
-  // fetchAvatar = (avatarId) => {
-  //   AvatarsAPI.avatar(avatarId)
-  //     .then(res => {
-  //       this.setState({
-  //         avatar: res.data[0].avatarName
-  //       })
-  //     })
-  //     .catch(res => console.log("error", (err)))
-  // }
+  fetchAvatar = (avatarId) => {
+    AvatarsAPI.avatar(avatarId)
+      .then(res => {
+        this.setState({
+          avatar: res.data[0].avatarName
+        })
+      })
+      .catch(err => console.log("error", (err)))
+  }
 
 
+  //axios call to backend with both IDS
+  //if follow model EXISTS 
 
-  // CREATE FOLLOW LOGIC //
+  // (if profile_id === followee_id && user_loggedin_id === this.props.match.params.user_id )
+
   //following-data = "Currently Following"
   //else
   //following-data = "Click to follow"
@@ -57,7 +60,7 @@ class Profile extends Component {
 
 
   render() {
-    // console.lo g("PROFILE", this.state)
+    // console.log("PROFILE", this.state)
     // console.log("PROFILE", this.props.user._id)
     let profileData;
     if (this.props.user) {

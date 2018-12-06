@@ -21,6 +21,7 @@ class CommentsContainer extends Component {
   fetchComments = (postId) => {
     CommentsAPI.show(postId)
       .then(res => {
+        console.log('CC FETCH RES ', res)
         this.setState({
           comments: res.data,
         })
@@ -29,7 +30,7 @@ class CommentsContainer extends Component {
 
 
   render() {
-    console.log("CCprops", this.props)
+    console.log("CCprops", this.props.user.user.id)
     console.log("CC STATE", this.state)
 
     // const commentBox = this.state.comments.length > 0
@@ -39,7 +40,7 @@ class CommentsContainer extends Component {
     return (
       <div>
         <CommentsList comments={this.state.comments} user={this.props.user} />
-        <CommentBox post={this.props.post} fetchComments={this.fetchComments} user={this.props.user} />
+        <CommentBox post={this.props.post} fetchComments={this.fetchComments} userid={this.props.user.user.id} />
       </div>
     )
   }

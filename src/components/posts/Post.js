@@ -48,9 +48,9 @@ class Post extends Component {
       // })
       .then(res => {
         console.log('FETCH IMAGE', res.data)
-        if (res.data.imageName) {
+        if (res.data[0].imageName) {
           this.setState({
-            postImage: res.data.imageName
+            postImage: res.data[0].imageName
           })
         }
       })
@@ -111,7 +111,8 @@ class Post extends Component {
           </div>
         </div>
         <div className='Post__body'>
-          {this.state.postImage ? <img src={`http://localhost:4000/image/${this.state.postImage}`} alt="Post" /> : null}
+          {/* {this.state.postImage ? <img src={`http://localhost:4000/image/${this.state.postImage}`} alt="Post" /> : null} */}
+          <img src={`http://localhost:4000/uploads/${this.state.postImage}`} alt="Post" />
           <div>{this.state.post.location}</div>
           <div>{this.state.post.caption}</div>
         </div>
