@@ -67,6 +67,14 @@ class Post extends Component {
       })
   }
 
+  handleDelete = (postId) => {
+    PostsAPI.delete(postId)
+      .then(res => {
+        console.log("deleted!", res)
+        this.props.fetchPosts();
+      })
+  }
+
   increaseLikes = () => {
     let likeCount = this.state.post.likes + 1;
     let increaseLikes = { likes: likeCount };
@@ -111,7 +119,7 @@ class Post extends Component {
           </div>
         </div>
         <div className='Post__body'>
-          {/* {this.state.postImage ? <img src={`http://localhost:4000/image/${this.state.postImage}`} alt="Post" /> : null} */}
+          {/* {this.state.postImage ? <img src={`http://localhost:4000/uploads/${this.state.postImage}`} alt="Post" /> : null} */}
           <img src={`http://localhost:4000/uploads/${this.state.postImage}`} alt="Post" />
           <div>{this.state.post.location}</div>
           <div>{this.state.post.caption}</div>
@@ -130,9 +138,15 @@ class Post extends Component {
                 <i className="fa fa-heart-o LikeButton__icon" />
               </button>
             </div>
+            <div className="Post__action-box">
+              {this.props.user.user.id === this.props.post.user._id
+                ? <button onClick={() => this.handleDelete(this.props.post._id)}>Delete</button>
+                : null}
+            </div>
             <div className="Post__comment-box">
               <CommentsContainer post={this.state.post._id} user={this.props.user} />
             </div>
+
           </div>
         </div>
       </article>
@@ -142,3 +156,11 @@ class Post extends Component {
 
 
 export default Post;
+
+
+
+
+// user_id === post.user.id </delete>
+// render (
+//   <delete button>
+// )

@@ -45,7 +45,7 @@ class FeedContainer extends Component {
     }
     return (
       <div>
-        <PostsList posts={this.state.posts} user={this.props.user} />
+        <PostsList posts={this.state.posts} user={this.props.user} fetchPosts={this.fetchPosts} />
         <NewPostButton onClick={this.openModal} />
         {postModal}
       </div>

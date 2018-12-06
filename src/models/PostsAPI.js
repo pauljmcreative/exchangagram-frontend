@@ -10,6 +10,8 @@ class PostsAPI {
 
   static update = (id, data) => axios.put(baseUrl + id, data)
 
+  static delete = (id) => axios.delete(baseUrl + id);
+
 
 };
 
