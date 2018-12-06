@@ -39,7 +39,7 @@
 
 ![alt text](/wireframes/profile.png)
 
-<img src="src/wireframes/edit-profile.png">
+<img src="wireframes/edit-profile.png">
 ![alt text](/src/wireframes/edit-profile.png)
 
 ![alt text](/wireframes/profile-img-modal.png)
