@@ -53,20 +53,29 @@
 
 
 ## Interesting bits of code:
+
+* home-switch-propspass
 ![home-switch-propspass](/code-examples/home-switch.png)
 
+* post-fetch-call-promise
 ![post-fetch-call-promise](/code-examples/post-fetch-call-promise.png)
 
+* jwt-token-decode
 ![jwt-token-decode](/code-examples/jwt-token-decode.png)
 
+* profile-container-ternary
 ![profile-container-ternary](/code-examples/profile-container-ternary.png)
 
+* profile-ternary
 ![profile-ternary](/code-examples/profile-ternary.png)
 
+* backend-multer
 ![backend-multer](/code-examples/backend-multer.png)
 
+* front-validation
 ![front-validation](/code-examples/front-validation.png)
 
+* profile-cdm-cwm
 ![profile-cdm-cwm](/code-examples/profile-cdm-cwm.png)
 
 
