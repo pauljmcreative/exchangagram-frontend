@@ -17,10 +17,11 @@ class Post extends Component {
 
   componentDidMount = () => {
     if (this.props.post._id) {
+
       Promise.all([
         this.fetchImage(this.props.post._id),
         this.fetchPostById(this.props.post._id),
-        this.fetchAvatar(this.props.user.user.id)
+        this.fetchAvatar(this.props.post.user._id)
       ])
         .then(res => {
           console.log("completed all promises", res)
@@ -61,8 +62,9 @@ class Post extends Component {
     AvatarsAPI.avatar(avatarId)
       .then(res => {
         console.log("FETCH", res)
+        // debugger;
         this.setState({
-          avatar: res.data[0].avatarName
+          avatar: res.data.length ? 'avatars/' + res.data[0].avatarName : 'avatars/default-avatar.png'
         })
       })
   }
@@ -105,7 +107,7 @@ class Post extends Component {
         <div className="Post-header">
           <div className="Post-header__avatar-container">
             {this.state.avatar ? <img
-              src={`http://localhost:4000/avatars/${this.state.avatar}`}
+              src={`http://localhost:4000/${this.state.avatar}`}
               className="Post-header__avatar-img"
               alt="Profile"
             /> : null}
