@@ -29,7 +29,7 @@
 * Axios calls used virtually everywhere.
 
 ## Wireframes
-![alt text](/wireframes/signin.png)
+![signin Wireframe](/wireframes/signin.png)
 
 ![alt text](/wireframes/signup.png)
 
@@ -39,6 +39,7 @@
 
 ![alt text](/wireframes/profile.png)
 
+<img src="wireframes/edit-profile.png">
 ![alt text](/wireframes/edit-profile.png)
 
 ![alt text](/wireframes/profile-img-modal.png)
