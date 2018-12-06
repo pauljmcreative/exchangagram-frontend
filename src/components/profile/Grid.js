@@ -2,7 +2,7 @@ import React, { Component } from 'react';
 import GridModal from './GridModal';
 import PostsAPI from '../../models/PostsAPI';
 import ImagesAPI from '../../models/ImagesAPI';
-import '../../styles/PhotoGrid.css';
+import '../../styles/Grid.css';
 
 class Grid extends Component {
   state = {
@@ -57,8 +57,10 @@ class Grid extends Component {
 
   render() {
     return (
-      <div className="PhotoGrid__img-wrap">
-        {this.state.postImage ? <img onClick={this.openModal} src={`http://localhost:4000/image/${this.state.postImage}`} alt="Post" /> : null}
+      <div>
+        <div className="Grid__thumbnail">
+          {this.state.postImage ? <img onClick={this.openModal} src={`http://localhost:4000/image/${this.state.postImage}`} alt="Post" /> : null}
+        </div>
         <GridModal
           post={this.state.post}
           isOpen={this.state.gridModalIsOpen}

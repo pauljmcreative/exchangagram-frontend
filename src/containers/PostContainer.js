@@ -21,6 +21,7 @@ class FeedContainer extends Component {
   fetchPosts = () => {
     PostsAPI.index()
       .then(res => {
+        debugger;
         this.setState({
           posts: res.data
         })

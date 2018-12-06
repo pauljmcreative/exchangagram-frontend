@@ -55,38 +55,42 @@ class Profile extends Component {
       const user = this.props.user;
       const decoded = jwt_decode(localStorage.getItem("egt"));
       profileData = (
-        <div className="row Profile__user-info-container">
-          <div className="four columns">
-            <div className="Profile__avatar-img-wrapper">
-              {this.state.avatar ? <img
-                src={`http://localhost:4000/avatars/${this.state.avatar}`}
-                className="Profile__avatar-img"
-                alt='profile'
-              /> : null}
-            </div>
-          </div>
-          <div className="Profile__container five columns">
-            <h3 className="Profile__username">{user.username}</h3>
+        <div className="row Profile__user-container">
+          <div className="Profile__user-container-flex">
 
-            {/* <div className="Profile__stats">
-              <div className="Profile__stats-item">
-                <span className="Profile__stats-count">{user.joinDate}</span>
+            <div className="Profile__avatar-container four columns">
+              <div className="Profile__avatar-img-wrapper">
+                {this.state.avatar ? <img
+                  src={`http://localhost:4000/avatars/${this.state.avatar}`}
+                  className="Profile__avatar-img"
+                  alt='profile'
+                /> : null}
               </div>
-            </div> */}
+            </div>
 
-            {decoded.user.id === this.props.match.params.user_id ?
-              <React.Fragment>
-                <div className="Profile__btns"><button className="Profile__button" onClick={this.props.updateEditProfile}><i class="fa fa-edit fa-2x "></i></button>
-                  <button className="Profile__button" onClick={this.props.handleLogout}><i class="fa fa-sign-out fa-2x"></i></button></div>
-              </React.Fragment> : <button>Follow</button>}
+            <div className="Profile__txt">
+              <h3 className="Profile__username">{user.username}</h3>
+              {decoded.user.id === this.props.match.params.user_id ?
+                <React.Fragment>
+                  <div className="Profile__btns">
+                    <button className="Profile__button" onClick={this.props.updateEditProfile}>
+                      <i class="fa fa-edit fa-2x "></i></button>
+                    <button className="Profile__button" onClick={this.props.handleLogout}>
+                      <i class="fa fa-sign-out fa-2x"></i>
+                    </button>
+                  </div>
+                </React.Fragment> : <button>Follow</button>}
+            </div>
           </div>
         </div>
       )
     }
 
     return (
-      <div className="Profile__root container">
-        {profileData}
+      <div className="Profile__user-info-container">
+        <div className="Profile__root container">
+          {profileData}
+        </div>
       </div>
     )
   }

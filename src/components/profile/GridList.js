@@ -1,6 +1,6 @@
 import React from 'react';
 import Grid from './Grid';
-import '../../styles/PhotoGrid.css';
+import '../../styles/GridList.css';
 
 
 const GridList = (props) => {
@@ -9,8 +9,8 @@ const GridList = (props) => {
     .filter(post => post.user._id === props.userId)
     .map(post => <Grid key={post._id} post={post} user={props.user} />)
   return (
-    <div className="PhotoGrid__root">
-      <div className="PhotoGrid__grid-container Locations__photo-gallery">
+    <div className="">
+      <div className="GridList__root">
         {gridItems}
       </div>
     </div>

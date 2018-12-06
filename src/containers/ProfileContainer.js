@@ -6,6 +6,8 @@ import PostsAPI from '../models/PostsAPI';
 // import AvatarsAPI from '../models/AvatarsAPI';
 import GridModal from '../components/profile/GridModal';
 import UsersAPI from '../models/UsersAPI';
+import '../styles/ProfileContainer.css';
+
 
 
 class ProfileContainer extends Component {
@@ -96,9 +98,11 @@ class ProfileContainer extends Component {
         </div>
     } else {
       profileSwitch =
-        <div className="PhotoGrid__root">
-          <Profile {...this.props} user={this.state.user} posts={this.state.posts} updateEditProfile={this.updateEditProfile} />
-          <div className="PhotoGrid__grid-container Locations__photo-gallery">
+        <div className="ProfileContainer__root">
+          <div className="ProfileContainer__user- container">
+            <Profile {...this.props} user={this.state.user} posts={this.state.posts} updateEditProfile={this.updateEditProfile} />
+          </div>
+          <div>
             {gridList}
           </div>
         </div>

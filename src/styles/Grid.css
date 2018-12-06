@@ -1,14 +1,18 @@
-.PhotoGrid__thumbnail {
+
+.Grid__thumbnail img {
   width: 270px;
   height: 270px;
   margin: 20px;
 }
 
-.PhotoGrid__overlay {
+
+
+
+.Grid__overlay {
   display: none;
 }
 
-.PhotoGrid__root:hover .PhotoGrid__overlay {
+.Grid__root:hover .Grid__overlay {
   display: block;
   background: rgba(0,0,0,0.35);
   width: 100%;
@@ -19,7 +23,7 @@
   position: relative;
 }
 
-.PhotoGrid__overlay-icons {
+.Grid__overlay-icons {
   display: flex;
   width: 50%;
   justify-content: space-around;
@@ -29,16 +33,14 @@
   transform: translate(-50%, -50%);
 }
 
-.PhotoGrid__likes-count,
-.PhotoGrid__comments-count {
+.Grid__likes-count,
+.Grid__comments-count {
   color: rgba(255, 255, 255, 0.9);
   font-size: 20px;
 }
 
-.PhotoGrid__count {
+.Grid__count {
   font-size: 16px;
   line-height: 20px;
   margin-left: 5px;
 }
-
-

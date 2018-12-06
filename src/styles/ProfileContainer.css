@@ -1,0 +1,19 @@
+.ProfileContainer__root {
+  display: flex;
+  flex-direction: column;
+}
+
+.ProfileContainer__user-container {
+  display: block;
+  padding: 40px 0;
+}
+
+.Profile__user-container-flex {
+  display: flex;
+  flex-direction: row;
+
+}
+
+.ProfileContainer__photogrid {
+  display: block;
+}

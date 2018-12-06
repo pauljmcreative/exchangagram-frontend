@@ -54,6 +54,7 @@ class EditProfileForm extends Component {
     console.log("EDIT PROF", this.props.user)
     return (
       <React.Fragment>
+        <h4>Edit profile...</h4>
         <form className="SignInForm__root">
           <fieldset>
             <input
