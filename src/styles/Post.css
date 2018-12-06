@@ -2,9 +2,9 @@
   width: 100%;
   max-width: 600px;
   margin: 40px auto;
-  border: 1px solid #efefef;
+  border: 2px solid #d8d6d6;
   background-color: #fff;
-  border-radius: 2px;
+  border-radius: 8px;
   box-shadow: 0 1px 4px rgba(0,0,0,.04);
 }
 
@@ -15,10 +15,10 @@
 }
 
 .Post-header__avatar-container {
-  width: 30px;
-  height: 30px;
+  width: 45px;
+  height: 45px;
   margin-right: 10px;
-  border: 1px solid #dbdbdb;
+  border: 3px solid #d8d6d6;
   border-radius: 50%;
 }
 
@@ -35,10 +35,11 @@
 
 .Post-header__username {
   font-weight: 600;
-  font-size: 15px;
+  font-size: 20px;
 }
 
 .Post-header__username a {
+  cursor: pointer;
   color: #262626;
   text-decoration: none;
 }
@@ -82,7 +83,9 @@
 }
 
 .Post__comments {
+  font-size: 16px;
   padding-bottom: 10px;
+  padding-left: 15px;
 }
 
 .Post__likes {
@@ -100,6 +103,13 @@
   margin-right: 8px;
 }
 
+
+
+.Post__likes-txt {
+  margin-left: 15px;
+  margin-top: 6px;
+}
+
 .Post__comment-box {
   flex-grow: 1;
 }
@@ -109,6 +119,37 @@
   height: 100%;
   position: relative;
 }
+
+.Post__delete-button{
+  border: none;
+}
+
+.Post__btn {
+    border: none;
+    outline: none;
+    font-size: 22px;
+    padding: 0;
+    margin: 0;
+  }
+
+  .Post__btn .btn {
+    cursor: pointer;
+    border: none;
+    padding: 0;
+    margin-right: 15px;
+  }
+
+  
+
+  .Post__btn .btn:hover {
+    color: darkred;
+  }
+
+  .like-hearts .btn {
+    display: right;
+    margin-left: 30px;
+  }
+
 
 .Post__heart-animation-icon {
   z-index: -1;

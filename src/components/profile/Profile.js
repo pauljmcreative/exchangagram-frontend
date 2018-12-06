@@ -2,6 +2,8 @@ import React, { Component } from 'react';
 import UsersAPI from '../../models/UsersAPI';
 import AvatarsAPI from '../../models/AvatarsAPI';
 import jwt_decode from 'jwt-decode';
+import '../../styles/Profile.css';
+
 
 
 
@@ -60,24 +62,24 @@ class Profile extends Component {
                 src={`http://localhost:4000/avatars/${this.state.avatar}`}
                 className="Profile__avatar-img"
                 alt='profile'
-                style={{ width: '100px', height: '100px' }}
               /> : null}
             </div>
           </div>
-          <div className="five columns">
+          <div className="Profile__container five columns">
             <h3 className="Profile__username">{user.username}</h3>
 
-            <div className="Profile__stats">
+            {/* <div className="Profile__stats">
               <div className="Profile__stats-item">
                 <span className="Profile__stats-count">{user.joinDate}</span>
               </div>
-            </div>
+            </div> */}
+
+            {decoded.user.id === this.props.match.params.user_id ?
+              <React.Fragment>
+                <div className="Profile__btns"><button className="Profile__button" onClick={this.props.updateEditProfile}><i class="fa fa-edit fa-2x "></i></button>
+                  <button className="Profile__button" onClick={this.props.handleLogout}><i class="fa fa-sign-out fa-2x"></i></button></div>
+              </React.Fragment> : <button>Follow</button>}
           </div>
-          {decoded.user.id === this.props.match.params.user_id ?
-            <React.Fragment>
-              <button onClick={this.props.updateEditProfile}>Edit Profile</button>
-              <button onClick={this.props.handleLogout}>logout</button>
-            </React.Fragment> : <button>Follow</button>}
         </div>
       )
     }

@@ -1,6 +1,6 @@
 import React, { Component } from 'react';
 import { Link } from 'react-router-dom';
-// import '../../styles/CommentItem.css';
+import '../../styles/CommentItem.css';
 
 
 class Comment extends Component {

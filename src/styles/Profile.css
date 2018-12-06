@@ -10,6 +10,7 @@
 
 .Profile__user-info-container {
   padding: 40px 0;
+  display: flex;
 }
 
 .Profile__avatar-img {
@@ -20,6 +21,7 @@
 }
 
 .Profile__username {
+  margin-left: 5.5em;
   display: inline-block;
   margin-right: 10px;
   font-family: 'Pacifico', cursive;
@@ -44,11 +46,14 @@
   color: #999;
 }
 
-.Profile__edit-button a {
+.Profile__btns .Profile__button {
+  display: inline-block;
+  border: none;
+}
+
+.Profile__button i {
   display: inline-block;
   width: 100%;
-  color: #999;
-  font-size: 14px;
   text-decoration: none;
   text-transform: none;
   letter-spacing: .1px;

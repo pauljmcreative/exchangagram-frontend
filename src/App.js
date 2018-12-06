@@ -5,6 +5,7 @@ import Header from './components/Header';
 import Home from './views/Home';
 import SignUp from './views/SignUp';
 import SignIn from './views/SignIn';
+import './styles/MainLayout.css';
 
 class App extends Component {
   state = {

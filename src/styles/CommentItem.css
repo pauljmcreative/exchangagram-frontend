@@ -1,0 +1,35 @@
+.CommentList__root {
+  padding-bottom: 3px;
+}
+.CommentItem__root {
+  color: #262626;
+}
+
+.CommentItem__link {
+  text-decoration: none;
+  color: #003569;
+  cursor: pointer;
+}
+
+.CommentItem__link:hover,
+.CommentItem__link:active {
+  color: #003569;
+}
+
+.CommentItem__username,
+.CommentItem__username:hover,
+.CommentItem__username:active {
+  color: #262626;
+  text-decoration: none;
+}
+
+.CommentItem__delete-button {
+  float: right;
+  color: #dbdbdb;
+  transition: color 200ms;
+  cursor: pointer;
+}
+
+.CommentItem__delete-button:hover {
+  color: #333;
+}

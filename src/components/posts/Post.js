@@ -116,32 +116,38 @@ class Post extends Component {
             </div>
           </div>
           <div className="Post-header__timestamp">
+            {this.props.user.user.id === this.props.post.user._id
+              ? <div className="Post__btn">
+                <button className="btn btn-danger" onClick={() => this.handleDelete(this.props.post._id)}><i className="fa fa-trash-o fa-2x" aria-hidden="true"></i></button>
+              </div>
+              : null}
           </div>
         </div>
         <div className='Post__body'>
           {/* {this.state.postImage ? <img src={`http://localhost:4000/uploads/${this.state.postImage}`} alt="Post" /> : null} */}
           <img src={`http://localhost:4000/uploads/${this.state.postImage}`} alt="Post" />
-          <div>{this.state.post.location}</div>
-          <div>{this.state.post.caption}</div>
+          <div>
+            <span className="Post__likes-txt">Likes: {this.state.post.likes}</span>
+            <span className="Post__btn like-hearts">
+              <button
+                className="btn btn-danger"
+                onClick={this.increaseLikes}>
+                <i className="fa fa-heart-o fa-2x LikeButton__icon" />
+              </button>
+              <button
+                className="btn btn-danger"
+                onClick={this.decreaseLikes}>
+                <i className="fa fa-heart-o fa-2x fa-rotate-180 LikeButton__icon" />
+              </button>
+            </span>
+          </div>
+          <div className="Post__comments">{this.state.post.location}</div>
+          <div className="Post__comments">{this.state.post.caption}</div>
         </div>
         <div className="Post__footer">
-          <div>Likes: {this.state.post.likes}</div>
           <div className="Post__action-box">
             <div className="Post__like-button">
               <LikeButton />
-              <button
-                onClick={this.increaseLikes}>
-                <i className="fa fa-heart-o LikeButton__icon" />
-              </button>
-              <button
-                onClick={this.decreaseLikes}>
-                <i className="fa fa-heart-o LikeButton__icon" />
-              </button>
-            </div>
-            <div className="Post__action-box">
-              {this.props.user.user.id === this.props.post.user._id
-                ? <button onClick={() => this.handleDelete(this.props.post._id)}>Delete</button>
-                : null}
             </div>
             <div className="Post__comment-box">
               <CommentsContainer post={this.state.post._id} user={this.props.user} />
