@@ -62,7 +62,6 @@ class Post extends Component {
     AvatarsAPI.avatar(avatarId)
       .then(res => {
         console.log("FETCH", res)
-        // debugger;
         this.setState({
           avatar: res.data.length ? 'avatars/' + res.data[0].avatarName : 'avatars/default-avatar.png'
         })
@@ -94,10 +93,7 @@ class Post extends Component {
 
 
   render() {
-    console.log('POSTstate>,', this.props);
-    // console.log("POST PROPS>", this.props.post.user)
-    // console.log('singlePOSTuser:', this.props.post.user.username)
-    // console.log('singlePOSTpost:', this.props.posts.data)
+
 
     const { _id, username } = this.props.post.user;
 
@@ -166,9 +162,3 @@ class Post extends Component {
 export default Post;
 
 
-
-
-// user_id === post.user.id </delete>
-// render (
-//   <delete button>
-// )
