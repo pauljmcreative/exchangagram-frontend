@@ -29,20 +29,20 @@
 * Axios calls used virtually everywhere.
 
 ## Wireframes
-![signin Wireframe](/wireframes/signin.png)
+![signin](/wireframes/signin.png)
 
-![alt text](/wireframes/signup.png)
+![signup](/wireframes/signup.png)
 
-![alt text](/wireframes/feed.png)
+![feed](/wireframes/feed.png)
 
-![alt text](/wireframes/new-post-modal.png)
+![new-post-modal](/wireframes/new-post-modal.png)
 
-![alt text](/wireframes/profile.png)
+![profile](/wireframes/profile.png)
 
-<img src="wireframes/edit-profile.png">
-![alt text](/src/wireframes/edit-profile.png)
+<!-- <img src="wireframes/edit-profile.png"> -->
+![edit-profile](/src/wireframes/edit-profile.png)
 
-![alt text](/wireframes/profile-img-modal.png)
+![profile-modal](/wireframes/profile-img-modal.png)
 
 
 ## Author
