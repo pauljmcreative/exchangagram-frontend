@@ -7,9 +7,9 @@ import UsersAPI from '../../models/UsersAPI';
 
 class EditProfileForm extends Component {
   state = {
-    name: '',
-    username: '',
-    email: '',
+    name: this.props.user.name,
+    username: this.props.user.username,
+    email: this.props.user.email,
   }
 
   handleEditProfileChange = (e) => {

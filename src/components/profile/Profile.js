@@ -45,20 +45,6 @@ class Profile extends Component {
   }
 
 
-  //axios call to backend with both IDS
-  //if follow model EXISTS 
-
-  // (if profile_id === followee_id && user_loggedin_id === this.props.match.params.user_id )
-
-  //following-data = "Currently Following"
-  //else
-  //following-data = "Click to follow"
-  // following button onclick
-  //grab FOLLOWEE_ID from profile_id
-  //grab FOLLOWER_ID from user_loggedin_id
-  //axios call to create route with those 2 IDs
-
-
   render() {
     // console.log("PROFILE", this.state)
     // console.log("PROFILE", this.props.user._id)
