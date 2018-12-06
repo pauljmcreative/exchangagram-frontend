@@ -18,6 +18,9 @@
 * to change the world!
 * Wanted to get to know React better and what better way than diving into a 50+ component app (not including css files) where everything is connected to everything.
 
+## ERD model
+![erd-model](/erd/erd.png)
+
 ## Features
 * User account creation/storage with password hashing.
 * User authentication via json web tokens on sign in or sign up.
