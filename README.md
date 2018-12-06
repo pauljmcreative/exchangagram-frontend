@@ -14,6 +14,10 @@
 * bcrypt
 * multer
 
+## Motivation
+* to change the world!
+* Wanted to get to know React better and what better way than diving into a 50+ component app (not including css files) where everything is connected to everything.
+
 ## Features
 * User account creation/storage with password hashing.
 * User authentication via json web tokens on sign in or sign up.
@@ -54,28 +58,28 @@
 
 ## Interesting bits of code:
 
-* home-switch-propspass
+### home-switch-propspass
 ![home-switch-propspass](/code-examples/home-switch.png)
 
-* post-fetch-call-promise
+### post-fetch-call-promise
 ![post-fetch-call-promise](/code-examples/post-fetch-call-promise.png)
 
-* jwt-token-decode
+### jwt-token-decode
 ![jwt-token-decode](/code-examples/jwt-token-decode.png)
 
-* profile-container-ternary
+### profile-container-ternary
 ![profile-container-ternary](/code-examples/profile-container-ternary.png)
 
-* profile-ternary
+### profile-ternary
 ![profile-ternary](/code-examples/profile-ternary.png)
 
-* backend-multer
+### backend-multer
 ![backend-multer](/code-examples/backend-multer.png)
 
-* front-validation
+### front-validation
 ![front-validation](/code-examples/front-validation.png)
 
-* profile-cdm-cwm
+### profile-cdm-cwm
 ![profile-cdm-cwm](/code-examples/profile-cdm-cwm.png)
 
 
