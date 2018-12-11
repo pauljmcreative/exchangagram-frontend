@@ -70,6 +70,7 @@ class Profile extends Component {
 
             <div className="Profile__txt">
               <h3 className="Profile__username">{user.username}</h3>
+
               {decoded.user.id === this.props.match.params.user_id ?
                 <React.Fragment>
                   <div className="Profile__btns">

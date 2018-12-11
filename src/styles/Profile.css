@@ -59,3 +59,7 @@
 .Profile__edit-button a:hover {
   color: #999;
 }
+
+@media only screen and (max-width: 750px) {
+  
+}
