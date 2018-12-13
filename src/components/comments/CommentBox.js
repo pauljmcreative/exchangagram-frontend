@@ -31,7 +31,7 @@ class CommentBox extends Component {
 
 
   render() {
-    console.log("comment box", this.props)
+    // console.log("comment box", this.props)
     return (
       <div className="CommentBox__root">
         <input

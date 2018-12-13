@@ -42,7 +42,7 @@ class ProfileContainer extends Component {
   fetchUser = (id) => {
     UsersAPI.show(id)
       .then(res => {
-        console.log('PROFILE CONTAINER RES', res.data)
+        // console.log('PROFILE CONTAINER RES', res.data)
         this.setState({
           user: res.data
         })
@@ -77,7 +77,7 @@ class ProfileContainer extends Component {
 
 
   render() {
-    console.log("PROFCONT..", this.state.user)
+    // console.log("PROFCONT..", this.state.user)
 
     const gridList = this.state.posts
       ? <GridList posts={this.state.posts} userId={this.props.match.params.user_id} />

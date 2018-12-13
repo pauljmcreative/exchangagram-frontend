@@ -53,14 +53,13 @@ class NewPostModal extends Component {
 
     const imageData = new FormData(document.querySelector('#image-upload'));
 
-    console.log('USERID', this.props.userId)
+    // console.log('USERID', this.props.userId)
     PostsAPI.create(postData, this.props.userId)
       .then(postres => {
-        console.log('post res:', postres)
-        // debugger;
+        // console.log('post res:', postres)
         ImagesAPI.create(imageData, postres.data._id)
           .then(imageres => {
-            console.log('imageRes:', imageres)
+            // console.log('imageRes:', imageres)
             this.props.closeModal();
             this.props.fetchPosts();
           })

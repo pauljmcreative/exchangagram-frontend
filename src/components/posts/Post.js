@@ -27,7 +27,7 @@ class Post extends Component {
           console.log("completed all promises", res)
         })
         .catch(err => {
-          console.warn("Error! Something went wrong.", err);
+          console.warn("Error! Something went wrong in Posts.", err);
         })
     }
   }
@@ -48,7 +48,7 @@ class Post extends Component {
       //   console.log(res.data)
       // })
       .then(res => {
-        console.log('FETCH IMAGE', res.data)
+        // console.log('FETCH IMAGE', res.data)
         if (res.data[0].imageName) {
           this.setState({
             postImage: res.data[0].imageName
@@ -58,14 +58,15 @@ class Post extends Component {
   }
 
   fetchAvatar = (avatarId) => {
-    console.log("POST FETCHING")
+    // console.log("POST FETCHING")
     AvatarsAPI.avatar(avatarId)
       .then(res => {
-        console.log("FETCH", res)
+        // console.log("FETCH", res)
         this.setState({
           avatar: res.data.length ? 'avatars/' + res.data[0].avatarName : 'avatars/default-avatar.png'
         })
       })
+      .catch(err => console.log('post avatar error', (err)))
   }
 
   handleDelete = (postId) => {
