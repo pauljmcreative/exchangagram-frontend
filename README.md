@@ -16,7 +16,7 @@
 
 ## Motivation
 * to change the world!
-* Wanted to get to know React better and what better way than diving into a 50+ component app (not including css files) where everything is connected to everything.
+* Wanted to get better aquainted with REACT...  what better way than modeling a successful social media app with many complex components.  Additionally I wanted to better understand relationships within REACT and Node.js.  As you can see by the ERD, social media components have no shortage of relationships.
 
 ## ERD model
 ![erd-model](/erd/erd.png)
@@ -38,10 +38,6 @@
 ## Author
 * [Paul Mourraille](https://github.com/pmourraille)
 
-## Acknowledgments
-> [Kenny Bushman](https://github.com/kbbushman) and [Brock Whitbread-Cole](https://github.com/brockwc) and * [Gabriel Ng](https://github.com/gabe-ng) for countless hours of problem solving.
-
-
 
 ## Wireframes
 ![signin](/wireframes/signin.png)
@@ -57,33 +53,6 @@
 ![edit-profile](/src/wireframes/edit-profile.png)
 
 ![profile-modal](/wireframes/profile-img-modal.png)
-
-
-## Interesting bits of code:
-
-### home-switch-propspass
-![home-switch-propspass](/code-examples/home-switch.png)
-
-### post-fetch-call-promise
-![post-fetch-call-promise](/code-examples/post-fetch-call-promise.png)
-
-### jwt-token-decode
-![jwt-token-decode](/code-examples/jwt-token-decode.png)
-
-### profile-container-ternary
-![profile-container-ternary](/code-examples/profile-container-ternary.png)
-
-### profile-ternary
-![profile-ternary](/code-examples/profile-ternary.png)
-
-### backend-multer
-![backend-multer](/code-examples/backend-multer.png)
-
-### front-validation
-![front-validation](/code-examples/front-validation.png)
-
-### profile-cdm-cwm
-![profile-cdm-cwm](/code-examples/profile-cdm-cwm.png)
 
 
 ## Future additions
