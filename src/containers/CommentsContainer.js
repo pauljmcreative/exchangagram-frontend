@@ -21,17 +21,18 @@ class CommentsContainer extends Component {
   fetchComments = (postId) => {
     CommentsAPI.show(postId)
       .then(res => {
-        console.log('CC FETCH RES ', res)
+        // console.log('CC FETCH RES ', res)
         this.setState({
           comments: res.data,
         })
+        console.log('HERE IS POST Comments', this.state.comments)
       })
   }
 
 
   render() {
-    console.log("CCprops", this.props.user.user.id)
-    console.log("CC STATE", this.state)
+    // console.log("CCprops", this.props.user.user.id)
+    // console.log("CC STATE", this.state)
 
     // const commentBox = this.state.comments.length > 0
     //   ? <CommentBox post={this.props.post} fetchComments={this.fetchComments} userid={this.state.comments[0].user._id} />

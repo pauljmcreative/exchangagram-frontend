@@ -5,7 +5,7 @@ import FormDivider from '../components/signup/FormDivider';
 import '../styles/SignUp.css';
 
 const SignUp = (props) => {
-  console.log(props)
+  // console.log(props)
   return (
     <div className="SignUp__root container">
       <div className="row">

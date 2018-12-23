@@ -51,7 +51,7 @@ class EditProfileForm extends Component {
   }
 
   render() {
-    console.log("EDIT PROF", this.props.user)
+    // console.log("EDIT PROF", this.props.user)
     return (
       <React.Fragment>
         <h4>Edit profile...</h4>

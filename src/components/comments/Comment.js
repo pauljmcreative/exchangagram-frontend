@@ -5,7 +5,7 @@ import '../../styles/CommentItem.css';
 
 class Comment extends Component {
   render() {
-    console.log("COMMENTprops", this.props)
+    // console.log("COMMENTprops", this.props)
     return (
       <div className="CommentItem__root">
         <strong><Link to={`/home/profile/${this.props.user._id}`} className="CommentItem__username">{this.props.user.username}</Link></strong>

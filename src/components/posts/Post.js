@@ -16,57 +16,64 @@ class Post extends Component {
   }
 
   componentDidMount = () => {
-    if (this.props.post._id) {
 
-      Promise.all([
-        this.fetchImage(this.props.post._id),
-        this.fetchPostById(this.props.post._id),
-        this.fetchAvatar(this.props.post.user._id)
-      ])
+    let fetchPostById = () => {
+      PostsAPI.show(this.props.post._id)
         .then(res => {
-          console.log("completed all promises", res)
-        })
-        .catch(err => {
-          console.warn("Error! Something went wrong.", err);
+          this.setState({
+            post: res.data,
+          })
         })
     }
-  }
 
-
-  fetchPostById = (postId) => {
-    PostsAPI.show(postId)
-      .then(res => {
-        this.setState({
-          post: res.data,
+    let fetchImage = () => {
+      ImagesAPI.image(this.props.post._id)
+        // .then(res => {
+        //   console.log(res.data)
+        // })
+        .then(res => {
+          // console.log('FETCH IMAGE', res.data)
+          if (res.data[0].imageName) {
+            this.setState({
+              postImage: res.data[0].imageName
+            })
+          }
         })
-      })
-  }
+    }
 
-  fetchImage = (postId) => {
-    ImagesAPI.image(postId)
-      // .then(res => {
-      //   console.log(res.data)
-      // })
-      .then(res => {
-        console.log('FETCH IMAGE', res.data)
-        if (res.data[0].imageName) {
+    let fetchAvatar = (avatarId) => {
+      // console.log("POST FETCHING")
+      AvatarsAPI.avatar(avatarId)
+        .then(res => {
+          // console.log("FETCH", res)
           this.setState({
-            postImage: res.data[0].imageName
+            avatar: res.data.length ? 'avatars/' + res.data[0].avatarName : 'avatars/default-avatar.png'
           })
-        }
-      })
+        })
+        .catch(err => console.log('post avatar error', (err)))
+    }
+
+    if (this.props.post._id) {
+
+      fetchImage()
+      fetchPostById()
+      fetchAvatar(this.props.post.user._id)
+
+      //   Promise.all([
+
+      //   ])
+      //     .then(res => {
+      //       console.log("completed all promises", res)
+      //     })
+      //     .catch(err => {
+      //       console.warn("Error! Something went wrong in Posts.", err);
+      //     })
+
+
+    }
+
   }
 
-  fetchAvatar = (avatarId) => {
-    console.log("POST FETCHING")
-    AvatarsAPI.avatar(avatarId)
-      .then(res => {
-        console.log("FETCH", res)
-        this.setState({
-          avatar: res.data.length ? 'avatars/' + res.data[0].avatarName : 'avatars/default-avatar.png'
-        })
-      })
-  }
 
   handleDelete = (postId) => {
     PostsAPI.delete(postId)

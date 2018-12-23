@@ -41,11 +41,17 @@ class SignUpForm extends Component {
         .then(() => this.props.history.push('/home/feed'))
         .catch((error) => {
           console.log(error)
+          this.handleInputErrors();
         })
         .then(res => console.log(res))
     }
   }
 
+  handleInputErrors = () => {
+    this.setState({
+      errors: { alreadyExists: 'Username or email already exist...  Please resubmit.' }
+    })
+  }
 
 
   validate = (values) => {
@@ -93,8 +99,6 @@ class SignUpForm extends Component {
     return formIsValid;
   }
 
-
-
   render() {
     return (
       <form className="SignUpForm__root">
@@ -117,6 +121,7 @@ class SignUpForm extends Component {
             className="SignUpForm__input"
           />
           <div className="errorMsg">{this.state.errors.email}</div>
+          <div className="errorMsg">{this.state.errors.alreadyExists}</div>
         </fieldset>
         <fieldset>
           <input
@@ -127,6 +132,8 @@ class SignUpForm extends Component {
             className="SignUpForm__input"
           />
           <div className="errorMsg">{this.state.errors.username}</div>
+          <div className="errorMsg">{this.state.errors.alreadyExists}</div>
+
         </fieldset>
         <fieldset>
           <input

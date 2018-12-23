@@ -34,13 +34,17 @@ class Profile extends Component {
           user: res.data,
         })
       })
+      .catch(err => console.log('profile user show error', (err)))
   }
 
   fetchAvatar = (avatarId) => {
+    console.log("Profile FETCHING")
     AvatarsAPI.avatar(avatarId)
       .then(res => {
+        console.log("FETCH", res)
         this.setState({
-          avatar: res.data[0].avatarName
+          // avatar: res.data[0].avatarName
+          avatar: res.data.length ? 'avatars/' + res.data[0].avatarName : 'avatars/default-avatar.png'
         })
       })
       .catch(err => console.log("error", (err)))

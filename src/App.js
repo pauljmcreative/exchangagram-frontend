@@ -5,6 +5,7 @@ import Header from './components/Header';
 import Home from './views/Home';
 import SignUp from './views/SignUp';
 import SignIn from './views/SignIn';
+import setAuthToken from './utils/setAuthToken';
 import './styles/MainLayout.css';
 
 class App extends Component {
@@ -21,7 +22,7 @@ class App extends Component {
       this.props.history.push('/'); //this is how to redirect to signin page
     } else {
       const decoded = jwt_decode(localStorage.getItem('egt'))
-      console.log('LOGGED USER ', decoded)
+      // console.log('LOGGED USER ', decoded)
       this.setState({
         isLoggedIn: true,
         user: decoded,
@@ -36,13 +37,14 @@ class App extends Component {
     });
   }
 
+
   handleLogout = () => {
     // console.log('logout clicked')
-    if (localStorage.getItem('egt') !== null) {
-      localStorage.removeItem('egt');
-      this.setState({ isLoggedIn: false, user: {} });
-      this.props.history.push('/');
-    }
+    // if (localStorage.getItem('egt') !== null) {
+    localStorage.removeItem('egt');
+    this.setState({ isLoggedIn: false, user: {} });
+    this.props.history.push('/');
+    // }
   }
 
   render() {
