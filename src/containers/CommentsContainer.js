@@ -25,6 +25,7 @@ class CommentsContainer extends Component {
         this.setState({
           comments: res.data,
         })
+        console.log('HERE IS POST Comments', this.state.comments)
       })
   }
 
