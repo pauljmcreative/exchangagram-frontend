@@ -1,60 +1,55 @@
-import React, { Component } from 'react';
-import { Link } from 'react-router-dom';
-import AvatarsAPI from '../../models/AvatarsAPI';
-
-
-
+import React, { Component } from "react";
+import { Link } from "react-router-dom";
+import AvatarsAPI from "../../models/AvatarsAPI";
 
 class Follower extends Component {
   state = {
-    avatar: '',
+    avatar: "",
     user: {},
-    allFollowers: {},
-  }
+    allFollowers: {}
+  };
 
   componentDidMount = () => {
     if (this.props.user._id) {
       this.fetchAvatar(this.props.user._id);
       this.fetchUserById(this.props.user._id);
     }
-  }
+  };
 
   componentDidUpdate = (prevProps, prevState) => {
     if (prevProps !== this.props) {
       this.fetchAvatar(this.props.user._id);
       this.fetchUserById(this.props.user._id);
     }
-  }
+  };
 
-  fetchUserById = (userId) => {
-    UsersAPI.show(userId)
-      .then(res => {
-        this.setState({
-          user: res.data,
-        })
-      })
-  }
+  fetchUserById = userId => {
+    UsersAPI.show(userId).then(res => {
+      this.setState({
+        user: res.data
+      });
+    });
+  };
 
-  fetchAvatar = (avatarId) => {
-    AvatarsAPI.avatar(avatarId)
-      .then(res => {
-        this.setState({
-          avatar: res.data[0].avatarName
-        })
-      })
-  }
-
-
+  fetchAvatar = avatarId => {
+    AvatarsAPI.avatar(avatarId).then(res => {
+      this.setState({
+        avatar: res.data[0].avatarName
+      });
+    });
+  };
 
   render() {
     return (
       <div className="Post-header">
         <div className="Post-header__avatar-container">
-          {this.state.avatar ? <img
-            src={`http://localhost:4000/avatars/${this.state.avatar}`}
-            className="Post-header__avatar-img"
-            alt="Profile"
-          /> : null}
+          {this.state.avatar ? (
+            <img
+              src={`http://localhost:4000/avatars/${this.state.avatar}`}
+              className="Post-header__avatar-img"
+              alt="Profile"
+            />
+          ) : null}
         </div>
         <div className="Post-header__metadata-container">
           <div className="Post-header__username">
@@ -62,10 +57,8 @@ class Follower extends Component {
           </div>
         </div>
       </div>
-    )
+    );
   }
 }
-
-
 
 export default Follower;

@@ -1,103 +1,104 @@
-import React, { Component } from 'react';
-import { withRouter } from 'react-router-dom';
-import UsersAPI from '../../models/UsersAPI';
-import jwt_decode from 'jwt-decode';
-import '../../styles/SignUpForm.css';
-import setAuthToken from '../../utils/setAuthToken';
+import React, { Component } from "react";
+import { withRouter } from "react-router-dom";
+import UsersAPI from "../../models/UsersAPI";
+import jwt_decode from "jwt-decode";
+import "../../styles/SignUpForm.css";
+import setAuthToken from "../../utils/setAuthToken";
 
 class SignUpForm extends Component {
   state = {
-    name: '',
-    email: '',
-    username: '',
-    password: '',
-    errors: {},
-  }
+    name: "",
+    email: "",
+    username: "",
+    password: "",
+    errors: {}
+  };
 
-  handleChange = (e) => {
+  handleChange = e => {
     this.setState({
       [e.target.name]: e.target.value
     });
-  }
+  };
 
-  handleSignupSubmit = (e) => {
+  handleSignupSubmit = e => {
     e.preventDefault();
     const userData = {
       name: this.state.name,
       email: this.state.email,
       username: this.state.username,
       password: this.state.password
-    }
+    };
     if (this.validate(userData)) {
       UsersAPI.signup(userData)
         .then(res => {
-          // console.log(res);
-          localStorage.setItem('egt', res.data.token);
+          console.log(res);
+          localStorage.setItem("egt", res.data.token);
           setAuthToken(res.data.token);
           const decoded = jwt_decode(res.data.token);
           // console.log(decoded);
           this.props.setUser(decoded);
         })
-        .then(() => this.props.history.push('/home/feed'))
-        .catch((error) => {
-          console.log(error)
+        .then(() => this.props.history.push("/home/feed"))
+        .catch(error => {
+          console.log(error);
           this.handleInputErrors();
-        })
-        .then(res => console.log(res))
+        });
     }
-  }
+  };
 
   handleInputErrors = () => {
     this.setState({
-      errors: { alreadyExists: 'Username or email already exist...  Please resubmit.' }
-    })
-  }
+      errors: {
+        alreadyExists: "Username or email already exist...  Please resubmit."
+      }
+    });
+  };
 
-
-  validate = (values) => {
+  validate = values => {
     let errors = {};
     let formIsValid = true;
 
     if (!values.name) {
       formIsValid = false;
-      errors.name = '*Please enter your name.';
+      errors.name = "*Please enter your name.";
     }
 
     if (!values.email) {
       formIsValid = false;
-      errors.email = '*Please enter your email.';
-    } else if (!/^[A-Z0-9._%+-]+@[A-Z0-9.-]+\.[A-Z]{2,4}$/i.test(values.email)) {
+      errors.email = "*Please enter your email.";
+    } else if (
+      !/^[A-Z0-9._%+-]+@[A-Z0-9.-]+\.[A-Z]{2,4}$/i.test(values.email)
+    ) {
       formIsValid = false;
-      errors.email = '*Please re-enter your email.';
+      errors.email = "*Please re-enter your email.";
     }
-
 
     if (!values.username) {
       formIsValid = false;
-      errors.username = '*Please enter your username.';
+      errors.username = "*Please enter your username.";
     } else if (values.username.length < 2) {
       formIsValid = false;
-      errors.username = '*Please re-enter your username.';
+      errors.username = "*Please re-enter your username.";
     } else if (values.username.length > 30) {
       formIsValid = false;
-      errors.username = '*Please re-enter your username.';
+      errors.username = "*Please re-enter your username.";
     } else if (!/^[A-Z0-9_-]{3,30}$/i.test(values.username)) {
       formIsValid = false;
-      errors.username = '*Please re-enter your username.'
+      errors.username = "*Please re-enter your username.";
     } // Add uniqueness
 
     if (!values.password) {
       formIsValid = false;
-      errors.password = '*Password is required';
+      errors.password = "*Password is required";
     } else if (values.password.length < 8) {
       formIsValid = false;
-      errors.password = '*Please re-enter password';
+      errors.password = "*Please re-enter password";
     }
     this.setState({
       errors: errors
-    })
+    });
     return formIsValid;
-  }
+  };
 
   render() {
     return (
@@ -133,7 +134,6 @@ class SignUpForm extends Component {
           />
           <div className="errorMsg">{this.state.errors.username}</div>
           <div className="errorMsg">{this.state.errors.alreadyExists}</div>
-
         </fieldset>
         <fieldset>
           <input
@@ -148,7 +148,8 @@ class SignUpForm extends Component {
         <button
           onClick={this.handleSignupSubmit}
           className="SignUpForm__button"
-          type="submit">
+          type="submit"
+        >
           {/* <i className="fa fa-spinner fa-pulse fa-3x fa-fw SignUpForm__spinner" /> */}
           Submit
         </button>
@@ -157,6 +158,4 @@ class SignUpForm extends Component {
   }
 }
 
-
 export default withRouter(SignUpForm);
-

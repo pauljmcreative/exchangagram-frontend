@@ -1,11 +1,11 @@
-import React, { Component } from 'react';
-import CommentBox from '../components/comments/CommentBox';
-import CommentsList from '../components/comments/CommentsList';
-import CommentsAPI from '../models/CommentsAPI';
+import React, { Component } from "react";
+import CommentBox from "../components/comments/CommentBox";
+import CommentsList from "../components/comments/CommentsList";
+import CommentsAPI from "../models/CommentsAPI";
 
 class CommentsContainer extends Component {
   state = {
-    comments: [],
+    comments: []
   };
 
   // componentDidMount = () => {
@@ -13,22 +13,20 @@ class CommentsContainer extends Component {
   // }
 
   componentDidUpdate = (prevProps, prevState) => {
-    if (prevProps !== this.props) {
+    if (prevProps.post !== this.props.post) {
       this.fetchComments(this.props.post);
     }
-  }
+  };
 
-  fetchComments = (postId) => {
-    CommentsAPI.show(postId)
-      .then(res => {
-        // console.log('CC FETCH RES ', res)
-        this.setState({
-          comments: res.data,
-        })
-        console.log('HERE IS POST Comments', this.state.comments)
-      })
-  }
-
+  fetchComments = postId => {
+    CommentsAPI.show(postId).then(res => {
+      // console.log('CC FETCH RES ', res)
+      this.setState({
+        comments: res.data
+      });
+      console.log("HERE IS POST Comments", this.state.comments);
+    });
+  };
 
   render() {
     // console.log("CCprops", this.props.user.user.id)
@@ -41,12 +39,14 @@ class CommentsContainer extends Component {
     return (
       <div>
         <CommentsList comments={this.state.comments} user={this.props.user} />
-        <CommentBox post={this.props.post} fetchComments={this.fetchComments} userid={this.props.user.user.id} />
+        <CommentBox
+          post={this.props.post}
+          fetchComments={this.fetchComments}
+          userid={this.props.user.user.id}
+        />
       </div>
-    )
+    );
   }
 }
 
-
 export default CommentsContainer;
-

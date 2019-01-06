@@ -1,34 +1,33 @@
-import React, { Component } from 'react';
-import '../../styles/CommentBox.css';
-import CommentsAPI from '../../models/CommentsAPI';
+import React, { Component } from "react";
+import "../../styles/CommentBox.css";
+import CommentsAPI from "../../models/CommentsAPI";
 
 class CommentBox extends Component {
   state = {
-    commentBody: '',
+    commentBody: ""
   };
 
-  handleCommentChange = (e) => {
+  handleCommentChange = e => {
     // console.log('comment event:', e);
     this.setState({ commentBody: e.target.value });
-  }
+  };
 
-
-  handleCommentKeyDown = (event) => {
+  handleCommentKeyDown = event => {
     event.persist();
     // console.log('Comment submitted!!!!', event.keyCode);
     if (event.keyCode === 13 && this.state.commentBody.trim().length > 0) {
-      console.log('Comment submitted!!!!', event.keyCode);
+      console.log("Comment submitted!!!!", event.keyCode);
       let comment = { body: this.state.commentBody };
-      CommentsAPI.create(comment, this.props.userid, this.props.post)
-        .then(res => {
+      CommentsAPI.create(comment, this.props.userid, this.props.post).then(
+        res => {
           this.props.fetchComments(this.props.post);
           this.setState({
-            commentBody: '',
-          })
-        })
+            commentBody: ""
+          });
+        }
+      );
     }
-  }
-
+  };
 
   render() {
     // console.log("comment box", this.props)
@@ -41,7 +40,9 @@ class CommentBox extends Component {
           value={this.state.commentBody}
           onChange={this.handleCommentChange}
           onKeyDown={this.handleCommentKeyDown}
-          ref={(ref) => { this.commentInput = ref }}
+          ref={ref => {
+            this.commentInput = ref;
+          }}
         />
       </div>
     );
