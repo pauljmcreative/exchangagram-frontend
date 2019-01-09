@@ -25,19 +25,23 @@ class EditProfileForm extends Component {
       email: this.state.email,
       name: this.state.name
     };
-    const avatarData = new FormData(document.querySelector("#avatar-upload"));
 
     UsersAPI.update(this.props.user._id, profileData)
       .then(res => {
         localStorage.setItem("egt", res.data.token);
         const decoded = jwt_decode(res.data.token);
-        AvatarsAPI.create(avatarData, decoded.user.id)
-          .then(avatarRes => {
-            console.log(avatarRes);
-          })
-          .catch(err => {
-            console.log("Avatar did not load", err);
-          });
+        if (document.getElementById("avatar-input").files.length == 0) {
+          console.log("no files selected");
+        } else {
+          const avatarData = new FormData(document.querySelector("#avatar-upload"));
+          AvatarsAPI.create(avatarData, decoded.user.id)
+            .then(avatarRes => {
+              console.log(avatarRes);
+            })
+            .catch(err => {
+              console.log("Avatar did not load", err);
+            });
+        };
         this.props.setUser(decoded);
         this.props.fetchUser(decoded.user.id);
         this.props.updateEditProfile();
@@ -85,7 +89,7 @@ class EditProfileForm extends Component {
           <fieldset>
             <div className="btn grey">
               <span>File</span>
-              <input name="myAvatar" type="file" />
+              <input name="myAvatar" type="file" id="avatar-input" />
             </div>
           </fieldset>
         </form>

@@ -23,6 +23,7 @@ class App extends Component {
     } else {
       const decoded = jwt_decode(localStorage.getItem('egt'))
       // console.log('LOGGED USER ', decoded)
+      setAuthToken(localStorage.getItem('egt'));
       this.setState({
         isLoggedIn: true,
         user: decoded,
