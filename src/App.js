@@ -19,7 +19,7 @@ class App extends Component {
       this.setState({
         isLoggedIn: false,
       });
-      this.props.history.push('https://pauljmcreative.github.io/exchangagram-frontend/'); //this is how to redirect to signin page
+      this.props.history.push('/exchangagram-frontend/'); //this is how to redirect to signin page
     } else {
       const decoded = jwt_decode(localStorage.getItem('egt'))
       // console.log('LOGGED USER ', decoded)
@@ -44,7 +44,7 @@ class App extends Component {
     // if (localStorage.getItem('egt') !== null) {
     localStorage.removeItem('egt');
     this.setState({ isLoggedIn: false, user: {} });
-    this.props.history.push('https://pauljmcreative.github.io/exchangagram-frontend/');
+    this.props.history.push('/exchangagram-frontend/');
     // }
   }
 
@@ -54,9 +54,9 @@ class App extends Component {
       <div className="MainLayout__root">
         <Header isLoggedIn={this.state.isLoggedIn} user={this.state.user} />
         <Switch>
-          <Route exact path="https://pauljmcreative.github.io/exchangagram-frontend/" render={props => <SignIn {...props} setUser={this.setUser} />} />
-          <Route exact path="https://pauljmcreative.github.io/exchangagram-frontend/signup" render={props => <SignUp {...props} setUser={this.setUser} />} />
-          <Route path="https://pauljmcreative.github.io/exchangagram-frontend/home" render={props => <Home user={this.state.user} setUser={this.setUser} handleLogout={this.handleLogout} />} />
+          <Route exact path="/exchangagram-frontend/" render={props => <SignIn {...props} setUser={this.setUser} />} />
+          <Route exact path="/exchangagram-frontend/signup" render={props => <SignUp {...props} setUser={this.setUser} />} />
+          <Route path="/exchangagram-frontend/home" render={props => <Home user={this.state.user} setUser={this.setUser} handleLogout={this.handleLogout} />} />
         </Switch>
       </div>
     );
