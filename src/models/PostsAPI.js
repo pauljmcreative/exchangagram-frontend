@@ -1,5 +1,5 @@
 import axios from 'axios';
-const baseUrl = 'http://localhost:4000/api/posts/';
+const baseUrl = 'https://exchangagram-backend.herokuapp.com/api/posts/';
 
 class PostsAPI {
   static index = () => axios.get(baseUrl);

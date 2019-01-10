@@ -1,5 +1,5 @@
 import axios from 'axios';
-const baseUrl = 'http://localhost:4000/api/users/';
+const baseUrl = 'https://exchangagram-backend.herokuapp.com/api/users/';
 
 class UsersAPI {
   static show = (id) => axios.get(baseUrl + id);
