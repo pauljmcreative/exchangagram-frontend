@@ -14,7 +14,7 @@ const SignUp = (props) => {
             <h1>SignUp!!!</h1>
             <SignUpForm setUser={props.setUser} />
             <FormDivider />
-            <Link className="signIn__link" to="/"><h4>sign in</h4></Link>
+            <Link className="signIn__link" to="/exchangragram-frontend/signup"><h4>sign in</h4></Link>
           </div>
         </div>
       </div>
