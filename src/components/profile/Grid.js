@@ -59,7 +59,7 @@ class Grid extends Component {
     return (
       <div>
         <div className="Grid__thumbnail">
-          {this.state.postImage ? <img onClick={this.openModal} src={`http://localhost:4000/image/${this.state.postImage}`} alt="Post" /> : null}
+          {this.state.postImage ? <img onClick={this.openModal} src={`https://exchangagram-backend.herokuapp.com/image/${this.state.postImage}`} alt="Post" /> : null}
         </div>
         <GridModal
           post={this.state.post}

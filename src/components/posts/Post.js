@@ -32,7 +32,7 @@ class Post extends Component {
           // console.log('FETCH IMAGE', res.data)
           if (res.data[0].imageName) {
             this.setState({
-              postImage: `http://localhost:4000/uploads/${
+              postImage: `https://exchangagram-backend.herokuapp.com/uploads/${
                 res.data[0].imageName
                 }`
             });
@@ -103,7 +103,7 @@ class Post extends Component {
           <div className="Post-header__avatar-container">
             {this.state.avatar ? (
               <img
-                src={`http://localhost:4000/${this.state.avatar}`}
+                src={`https://exchangagram-backend.herokuapp.com/${this.state.avatar}`}
                 className="Post-header__avatar-img"
                 alt="Profile"
               />
@@ -128,7 +128,7 @@ class Post extends Component {
           </div>
         </div>
         <div className="Post__body">
-          {/* {this.state.postImage ? <img src={`http://localhost:4000/uploads/${this.state.postImage}`} alt="Post" /> : null} */}
+          {/* {this.state.postImage ? <img src={`https://exchangagram-backend.herokuapp.com/uploads/${this.state.postImage}`} alt="Post" /> : null} */}
           <img src={this.state.postImage} alt="Post" />
           <div>
             <span className="Post__likes-txt">

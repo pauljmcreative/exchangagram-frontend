@@ -45,7 +45,7 @@ class Follower extends Component {
         <div className="Post-header__avatar-container">
           {this.state.avatar ? (
             <img
-              src={`http://localhost:4000/avatars/${this.state.avatar}`}
+              src={`https://exchangagram-backend.herokuapp.com/avatars/${this.state.avatar}`}
               className="Post-header__avatar-img"
               alt="Profile"
             />

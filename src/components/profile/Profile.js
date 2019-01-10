@@ -63,7 +63,7 @@ class Profile extends Component {
               <div className="Profile__avatar-img-wrapper">
                 {this.state.avatar ? (
                   <img
-                    src={`http://localhost:4000/${this.state.avatar}`}
+                    src={`https://exchangagram-backend.herokuapp.com/${this.state.avatar}`}
                     className="Profile__avatar-img"
                     alt="profile"
                   />
