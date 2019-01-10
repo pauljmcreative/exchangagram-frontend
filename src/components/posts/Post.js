@@ -34,7 +34,7 @@ class Post extends Component {
             this.setState({
               postImage: `http://localhost:4000/uploads/${
                 res.data[0].imageName
-              }`
+                }`
             });
           }
         });

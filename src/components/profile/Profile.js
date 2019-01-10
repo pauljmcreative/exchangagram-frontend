@@ -92,8 +92,8 @@ class Profile extends Component {
                   </div>
                 </React.Fragment>
               ) : (
-                <button>Follow</button>
-              )}
+                  <button>Follow</button>
+                )}
             </div>
           </div>
         </div>

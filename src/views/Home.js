@@ -12,8 +12,8 @@ class Home extends Component {
     return (
       <div className="Home__root container">
         <Switch>
-          <Route path="/home/feed" render={props => <PostContainer {...props} user={this.props.user} />} />
-          <Route path="/home/profile/:user_id" render={props => <ProfileContainer {...props} user={this.props.user} setUser={this.props.setUser} handleLogout={this.props.handleLogout} />} />
+          <Route path="https://pauljmcreative.github.io/exchangagram-frontend/home/feed" render={props => <PostContainer {...props} user={this.props.user} />} />
+          <Route path="https://pauljmcreative.github.io/exchangagram-frontend/home/profile/:user_id" render={props => <ProfileContainer {...props} user={this.props.user} setUser={this.props.setUser} handleLogout={this.props.handleLogout} />} />
         </Switch>
       </div>
     );

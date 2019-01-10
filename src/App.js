@@ -54,9 +54,9 @@ class App extends Component {
       <div className="MainLayout__root">
         <Header isLoggedIn={this.state.isLoggedIn} user={this.state.user} />
         <Switch>
-          <Route exact path="/" render={props => <SignIn {...props} setUser={this.setUser} />} />
-          <Route exact path="/signup" render={props => <SignUp {...props} setUser={this.setUser} />} />
-          <Route path="/home" render={props => <Home user={this.state.user} setUser={this.setUser} handleLogout={this.handleLogout} />} />
+          <Route exact path="https://pauljmcreative.github.io/exchangagram-frontend/" render={props => <SignIn {...props} setUser={this.setUser} />} />
+          <Route exact path="https://pauljmcreative.github.io/exchangagram-frontend/signup" render={props => <SignUp {...props} setUser={this.setUser} />} />
+          <Route path="https://pauljmcreative.github.io/exchangagram-frontend/home" render={props => <Home user={this.state.user} setUser={this.setUser} handleLogout={this.handleLogout} />} />
         </Switch>
       </div>
     );
