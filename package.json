@@ -2,6 +2,7 @@
   "name": "front-end",
   "version": "0.1.0",
   "private": true,
+  "homepage": "https://pauljmcreative.github.io/exchangagram-frontend/",
   "dependencies": {
     "actioncable": "^5.2.1",
     "axios": "^0.18.0",
@@ -25,6 +26,8 @@
     "skeleton": "^0.1.2"
   },
   "scripts": {
+    "predeploy": "npm run build",
+    "deploy": "gh-pages -d build",
     "start": "react-scripts start",
     "build": "react-scripts build",
     "test": "react-scripts test",
