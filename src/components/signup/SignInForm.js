@@ -33,7 +33,7 @@ class SignInForm extends Component {
           // console.log('decoded>>', decoded);
           this.props.setUser(decoded);
         })
-        .then(() => this.props.history.push('/home/feed'))
+        .then(() => this.props.history.push('/exchangagram-frontend/home/feed'))
         .catch(err => {
           console.log(err)
           this.handleIncorrectInputs();

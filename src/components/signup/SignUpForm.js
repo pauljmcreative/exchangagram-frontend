@@ -38,7 +38,7 @@ class SignUpForm extends Component {
           // console.log(decoded);
           this.props.setUser(decoded);
         })
-        .then(() => this.props.history.push("/home/feed"))
+        .then(() => this.props.history.push("/exchangagram-frontend/home/feed"))
         .catch(error => {
           console.log(error);
           this.handleInputErrors();
