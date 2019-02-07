@@ -14,7 +14,7 @@
 importScripts("https://storage.googleapis.com/workbox-cdn/releases/3.6.3/workbox-sw.js");
 
 importScripts(
-  "/exchangagram-frontend/precache-manifest.fba9a96e03a55b0598869aa5b9616689.js"
+  "/exchangagram-frontend/precache-manifest.1f8598190f4bd2233646102ed68b5f30.js"
 );
 
 workbox.clientsClaim();
