@@ -1,13 +1,13 @@
 {
   "main.css": "/exchangagram-frontend/static/css/main.5720a605.chunk.css",
-  "main.js": "/exchangagram-frontend/static/js/main.0d18185a.chunk.js",
-  "main.js.map": "/exchangagram-frontend/static/js/main.0d18185a.chunk.js.map",
+  "main.js": "/exchangagram-frontend/static/js/main.69a2c457.chunk.js",
+  "main.js.map": "/exchangagram-frontend/static/js/main.69a2c457.chunk.js.map",
   "static/js/1.cb7077a6.chunk.js": "/exchangagram-frontend/static/js/1.cb7077a6.chunk.js",
   "static/js/1.cb7077a6.chunk.js.map": "/exchangagram-frontend/static/js/1.cb7077a6.chunk.js.map",
   "runtime~main.js": "/exchangagram-frontend/static/js/runtime~main.d4f02769.js",
   "runtime~main.js.map": "/exchangagram-frontend/static/js/runtime~main.d4f02769.js.map",
   "static/css/main.5720a605.chunk.css.map": "/exchangagram-frontend/static/css/main.5720a605.chunk.css.map",
   "index.html": "/exchangagram-frontend/index.html",
-  "precache-manifest.1f8598190f4bd2233646102ed68b5f30.js": "/exchangagram-frontend/precache-manifest.1f8598190f4bd2233646102ed68b5f30.js",
+  "precache-manifest.e957bd038768d7ae838979f512c6e48b.js": "/exchangagram-frontend/precache-manifest.e957bd038768d7ae838979f512c6e48b.js",
   "service-worker.js": "/exchangagram-frontend/service-worker.js"
 }
